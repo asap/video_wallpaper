@@ -1,0 +1,18 @@
+/*
+Theme Name: Video Wallpaper
+Theme URI: 
+Author: Alexander Sapountzis
+Author URI: http://briteideas.com
+Description: A simple theme with a video as the wallpaper
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: black, white, yellow, light, custom-menu
+Text Domain: video_walpaper
+
+*/
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing:    border-box;
+    box-sizing:         border-box;
+}
