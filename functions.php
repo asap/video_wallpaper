@@ -51,7 +51,8 @@ function video_wallpaper_scripts_styles() {
     // Loads JavaScript file with functionality specific to Video Wallpaper.
     wp_enqueue_script( 'jquery-ui-slider' );
     wp_enqueue_script( 'videojs', get_template_directory_uri() . '/js/video.js', array( 'jquery' ), '2013-11-14', true );
-    wp_enqueue_script( 'bigvideo', get_template_directory_uri() . '/js/bigvideo.js', array( 'jquery', 'videojs', 'jquery-ui-slider' ), '2013-11-14', true );
+    wp_enqueue_script( 'bigvideo', get_template_directory_uri() . '/js/bigvideo.js', array( 'jquery', 'videojs', 'jquery-ui-slider' ), '1.0.3', true );
+    wp_enqueue_script( 'imagesLoaded', "http://desandro.github.io/imagesloaded/imagesloaded.pkgd.min.js", array('jquery'), '2013-11-04', true );
 
     wp_enqueue_script( 'video_wallpaper_scripts', get_template_directory_uri() . '/js/scripts.js', array( 'jquery' ), '2013-11-14', true  );
 
