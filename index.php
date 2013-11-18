@@ -24,9 +24,9 @@ jQuery(function($) {
     });
     BV.init();
     BV.show(
-        '', // Should be MP4
+        'http://www.beyonce.com/files/video/bey_intro_071513.mp4',
         {
-            altSource: '' // Should be OGV
+            altSource: "http://www.beyonce.com/files/video/bey_intro_071513.ogv"
         }
     );
 });

@@ -39,3 +39,10 @@
 <body <?php body_class(); ?>>
 
 <!--[if lt IE 8]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+
+<div id="navbar" class="navbar exposed">
+    <nav id="site-navigation" class="navigation main-navigation" role="navigation">
+        <h3 class="menu-toggle">Browse</h3>
+        <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
+    </nav><!-- #site-navigation -->
+</div><!-- navbar -->
