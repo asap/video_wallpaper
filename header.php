@@ -44,5 +44,12 @@
     <nav id="site-navigation" class="navigation main-navigation" role="navigation">
         <h3 class="menu-toggle">Browse</h3>
         <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
+        <div class="social-nav">
+            <ul>
+                <li><a href="http://facebook.com/Antoniquer" class="facebook">Facebook</a></li>
+                <li><a href="https://twitter.com/darealantonique" class="twitter">Twitter</a></li>
+                <li><a href="http://instagram.com/antoniqueworldwide" class="instagram">Instagram</a></li>
+            </ul>
+        </div>
     </nav><!-- #site-navigation -->
 </div><!-- navbar -->
