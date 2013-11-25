@@ -16,7 +16,10 @@ get_header(); ?>
 <script type="text/javascript">
 jQuery(function($) {
 
-    var image;
+    var alt,
+        image,
+        source,
+        video;
 
     <?php
     if ( has_post_thumbnail() ) {
@@ -28,13 +31,34 @@ jQuery(function($) {
     }
     ?>
 
+    <?php
+    if ( get_post_meta( $post->ID, 'video_url', true ) ){
+        $video_url = esc_url( get_post_meta( $post->ID, 'video_url', true ) );
+        ?>
+        video = '<?php echo $video_url; ?>';
+        <?
+    }
+    ?>
+
+    <?php
+    if ( get_post_meta( $post->ID, 'video_url_alt', true ) ){
+        $video_alt_url = esc_url( get_post_meta( $post->ID, 'video_url_alt', true ) );
+        ?>
+        alt = '<?php echo $video_alt_url; ?>';
+        <?
+    }
+    ?>
+
+    source = video || image;
+    altSource = alt || "";
+
     var BV = new $.BigVideo({
         controls: false,
         doLoop: true,
         useFlashForFirefox:false
     });
     BV.init();
-    BV.show(image);
+    BV.show(source, {altSource: altSource});
 });
 </script>
 
