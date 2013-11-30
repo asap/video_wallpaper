@@ -8,18 +8,18 @@
 */
 
 (function (factory) {
-    'use strict';
-    if (typeof define === 'function' && define.amd) {
-        // Register as an anonymous AMD module:
-        define([
-            'jquery',
-            'video.js',
-            'imagesloaded',
-            'jquery-ui'
-        ], factory);
-    } else {
-        factory(jQuery, videojs);
-    }
+  'use strict';
+  if (typeof define === 'function' && define.amd) {
+    // Register as an anonymous AMD module:
+    define([
+      'jquery',
+      'videojs',
+      'imagesloaded',
+      'jquery-ui'
+    ], factory);
+  } else {
+    factory(jQuery, videojs);
+  }
 })(function($, videojs) {
 
   $.BigVideo = function(options) {
@@ -251,10 +251,10 @@
         if (settings.useFlashForFirefox && (isFirefox)) {
           videoTechOrder = ['flash', 'html5'];
         }
-        player = videojs(vidEl.substr(1), { 
-          controls:false, 
-          autoplay:true, 
-          preload:'auto', 
+        player = videojs(vidEl.substr(1), {
+          controls:false,
+          autoplay:true,
+          preload:'auto',
           techOrder:videoTechOrder
         });
 
@@ -276,7 +276,7 @@
           .attr('height','100%');
 
         // set events
-        $(window).resize(function() {
+        $(window).on('resize.bigvideo', function() {
           updateSize();
         });
 
@@ -321,12 +321,14 @@
             source = options.altSource;
           }
           playVideo(source);
+          options.onShown && options.onShown();
           isQueued = false;
         }
       } else {
         playlist = source;
         currMediaIndex = 0;
         playVideo(playlist[currMediaIndex]);
+        options.onShown && options.onShown();
         isQueued = true;
       }
     };
@@ -336,10 +338,30 @@
       return player;
     };
 
+    BigVideo.dispose = function() {
+      isInitialized = false;
+
+      $(window).off('resize.bigvideo');
+
+      if(player) {
+        player.off('loadedmetadata');
+        player.off('ended');
+        player.dispose();
+      }
+    };
+
     // Expose BigVideoJS player actions (like 'play', 'pause' and so on)
     BigVideo.triggerPlayer = function(action){
       playControl(action);
     };
+    
+    // Remove the player
+    BigVideo.remove = function() {
+      wrap.remove();
+      
+      // remove the resize event
+      $(window).off("resize", updateSize);
+        };
   };
 
 });

@@ -35,6 +35,101 @@ function video_wallpaper_setup() {
 }
 add_action( 'after_setup_theme', 'video_wallpaper_setup' );
 
+
+/**
+ * Meta Boxes and custom fields
+ *
+ * @since Twenty Thirteen 1.0
+ *
+ * @return void
+ */
+function video_wallpaper_custom_post_meta(){
+    // $post = get_post();
+
+    // add_post_meta($post->id, 'video_url', '');
+
+    add_meta_box(
+        'video_url',
+        'Video Wallpaper',
+        'video_wallpaper_render_video_url_meta_box'
+    );
+}
+add_action( 'add_meta_boxes', 'video_wallpaper_custom_post_meta');
+
+function video_wallpaper_render_video_url_meta_box( $post ){
+    // Add an nonce field so we can check for it later.
+    wp_nonce_field(
+        'video_wallpaper_custom_box',
+        'video_wallpaper_custom_box_nonce'
+    );
+
+    /*
+     * Use get_post_meta() to retrieve an existing value
+     * from the database and use the value for the form.
+     */
+    $video_url     = get_post_meta( $post->ID, 'video_url', true );
+    $video_url_alt = get_post_meta( $post->ID, 'video_url_alt', true );
+
+    ?>
+    <label for="video_wallpaper_video_url">Video URL</label>
+    <input type="text" id="video_wallpaper_video_url"
+         name="video_wallpaper_video_url"
+         value="<?php echo esc_attr( $video_url ); ?>" size="50" />
+    <br />
+    <label for="video_wallpaper_video_url_alt">Alt Video</label>
+    <input type="text" id="video_wallpaper_video_url_alt"
+         name="video_wallpaper_video_url_alt"
+         value="<?php echo esc_attr( $video_url_alt ); ?>" size="50" />
+
+
+    <?php
+}
+
+function video_wallpaper_save_postdata( $post_id ) {
+    /*
+   * We need to verify this came from the our screen and with proper authorization,
+   * because save_post can be triggered at other times.
+   */
+
+  // Check if our nonce is set.
+  if ( ! isset( $_POST['video_wallpaper_custom_box_nonce'] ) )
+    return $post_id;
+
+  $nonce = $_POST['video_wallpaper_custom_box_nonce'];
+
+  // Verify that the nonce is valid.
+  if ( ! wp_verify_nonce( $nonce, 'video_wallpaper_custom_box' ) )
+      return $post_id;
+
+  // If this is an autosave, our form has not been submitted, so we don't want to do anything.
+  if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
+      return $post_id;
+
+  // Check the user's permissions.
+  if ( 'page' == $_POST['post_type'] ) {
+
+    if ( ! current_user_can( 'edit_page', $post_id ) )
+        return $post_id;
+  
+  } else {
+
+    if ( ! current_user_can( 'edit_post', $post_id ) )
+        return $post_id;
+  }
+
+  /* OK, its safe for us to save the data now. */
+
+  // Sanitize user input.
+  $video_url = sanitize_text_field( $_POST['video_wallpaper_video_url'] );
+  $video_url_alt = sanitize_text_field( $_POST['video_wallpaper_video_url_alt'] );
+
+  // Update the meta field in the database.
+  update_post_meta( $post_id, 'video_url', $video_url );
+  update_post_meta( $post_id, 'video_url_alt', $video_url_alt );
+}
+add_action( 'save_post', 'video_wallpaper_save_postdata' );
+
+
 /**
  * Enqueue scripts and styles for the front end.
  *
@@ -51,7 +146,8 @@ function video_wallpaper_scripts_styles() {
     // Loads JavaScript file with functionality specific to Video Wallpaper.
     wp_enqueue_script( 'jquery-ui-slider' );
     wp_enqueue_script( 'videojs', get_template_directory_uri() . '/js/video.js', array( 'jquery' ), '2013-11-14', true );
-    wp_enqueue_script( 'bigvideo', get_template_directory_uri() . '/js/bigvideo.js', array( 'jquery', 'videojs', 'jquery-ui-slider' ), '2013-11-14', true );
+    wp_enqueue_script( 'bigvideo', get_template_directory_uri() . '/js/bigvideo.js', array( 'jquery', 'videojs', 'jquery-ui-slider' ), '1.0.3', true );
+    wp_enqueue_script( 'imagesLoaded', "http://desandro.github.io/imagesloaded/imagesloaded.pkgd.min.js", array('jquery'), '2013-11-04', true );
 
     wp_enqueue_script( 'video_wallpaper_scripts', get_template_directory_uri() . '/js/scripts.js', array( 'jquery' ), '2013-11-14', true  );
 
