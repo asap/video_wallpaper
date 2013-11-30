@@ -35,8 +35,55 @@ function video_wallpaper_setup() {
 }
 add_action( 'after_setup_theme', 'video_wallpaper_setup' );
 
+/**
+ * Video_Wallpaper Options and settings.
+ *
+ * Sets up configurable options for the theme, such as social links
+ *
+ * @uses add_options_page() To create options page
+ * @uses settings_fields()
+ * @uses do_settings_sections()
+ * @uses screen_icon()
+ * @uses submit_button()
+ *
+ * @since Video Wallpaper 1.0
+ *
+ * @return void
+ */
 
-if ( ! function_exists( 'tvideo_wallpaper_paging_nav' ) ) :
+function video_wallpaper_admin_menu(){
+  add_options_page(
+    'Video Wallpaper Options',
+    'Video Wallpaper',
+    'manage_options',
+    'video_wallpaper_options',
+    'video_wallpaper_options_callback'
+  );
+}
+add_action( 'admin_menu', 'video_wallpaper_admin_menu');
+
+function video_wallpaper_options_callback(){
+  if ( !current_user_can( 'manage_options' ) )  {
+    wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+  }
+  ?>
+  <div class="wrap">
+    <?php screen_icon(); ?>
+    <h2>Video Wallpaper Settings</h2>
+
+    <?php settings_fields( $option_group ); ?>
+
+    <?php do_settings_sections( 'video_wallpaper_options' ); ?>
+    <?php submit_button('Save Changes'); ?>
+  </div><?php
+}
+
+// Individual settings are defined in their respective plugin folders
+// Social settings -> social.php
+
+
+
+if ( ! function_exists( 'video_wallpaper_paging_nav' ) ) :
 /**
  * Display navigation to next/previous set of posts when applicable.
  *
@@ -106,6 +153,11 @@ endif;
  * Meta Boxes and custom fields
  *
  * @since Twenty Thirteen 1.0
+ *
+ * @uses add_meta_box() to add a meta box
+ * @uses get_post_meta() to retrive meta data
+ * @uses update_post_meta() to save meta data
+ * @uses wp_nonce_field() to set a nonce
  *
  * @return void
  */
@@ -224,3 +276,11 @@ function video_wallpaper_scripts_styles() {
     wp_enqueue_style( 'video_wallpaper-style', get_stylesheet_uri(), array(), '2013-11-14' );
 }
 add_action( 'wp_enqueue_scripts', 'video_wallpaper_scripts_styles' );
+
+// Load plugins
+define("VW_THEME_DIR", dirname(__FILE__) . "/");
+define("VW_PLUGIN_DIR", VW_THEME_DIR . "plugins/");
+
+require_once VW_PLUGIN_DIR . 'social.php';
+
+

@@ -538,12 +538,15 @@ article,
 }
 
 .social-nav li a.facebook{
-    background: url(img/sprites.png) -183px -161px transparent no-repeat;
+    background: url(img/sprites.png) -211px -158px transparent no-repeat;
 }
 
+.social-nav li a.instagram{
+    background: url(img/sprites.png) -60px -158px transparent no-repeat;
+}
 
 .social-nav li a.twitter{
-    background: url(img/sprites.png) 0 -168px transparent no-repeat;
+    background: url(img/sprites.png) 11px -158px transparent no-repeat;
 }
 
 ul#menu-main{
