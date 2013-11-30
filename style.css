@@ -424,6 +424,32 @@ hr {
 
 /** Custom  ***/
 
+article{
+}
+
+#content{
+    background-color: #693d4a;
+    float: right;
+    margin: 25px;
+    padding: 20px;
+    opacity: 0.6;
+    width: 75%;
+}
+
+#content nav{
+    float: right;
+}
+
+article,
+#content nav{
+
+}
+
+#big-video-wrap{
+    position: absolute;
+    z-index: -100;
+}
+
 #navbar{
     background: #111;
     bottom: 200px;
@@ -438,6 +464,8 @@ hr {
     -moz-transition: all 1s ease-in-out;
     -o-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out;
+
+    z-index: 100;
 }
 
 #navbar.exposed{
