@@ -47,13 +47,14 @@ function video_wallpaper_social_settings_init(){
     'video_wallpaper_social_section'
   );
 
-  register_setting('video_wallpaper_options', 'video_wallpaper_facebook_id');
-  register_setting('video_wallpaper_options', 'video_wallpaper_instagram_id');
-  register_setting('video_wallpaper_options', 'video_wallpaper_twitter_id');
+  register_setting(
+    'video_wallpaper_settings_group',
+    'video_wallpaper_social_settings',
+    'video_wallpaper_settings_validate'
+  );
 
 }
 add_action( 'admin_init', 'video_wallpaper_social_settings_init');
-
 
 function video_wallpaper_social_section_callback(){
 ?>
@@ -63,33 +64,39 @@ function video_wallpaper_social_section_callback(){
 <?php
 }
 
-function video_wallpaper_instagram_id_callback(){
-  $facebook_id = esc_attr( get_option( 'video_wallpaper_facebook_id' ) );
+function video_wallpaper_facebook_id_callback(){
+  $options = get_option('video_wallpaper_social_settings');
 
-  ?><input name="video_wallpaper_facebook_id"
-           id="video_wallpaper_facebook_id"
+  ?><input name="video_wallpaper_social_settings[facebook_id]"
            type="text"
-           value="<?php echo $facebook_id ?>" /><?php
+           value="<?php echo $options['facebook_id']; ?>" /><?php
 }
 
-function video_wallpaper_facebook_id_callback(){
-  $instagram_id = esc_attr( get_option( 'video_wallpaper_instagram_id' ) );
+function video_wallpaper_instagram_id_callback(){
+  $options = get_option('video_wallpaper_social_settings');
 
-  ?><input name="video_wallpaper_instagram_id"
-           id="video_wallpaper_instagram_id"
+  ?><input name="video_wallpaper_social_settings[instagram_id]"
            type="text"
-           value="<?php echo $instagram_id ?>" /><?php
+           value="<?php echo $options['instagram_id']; ?>" /><?php
 }
 
 function video_wallpaper_twitter_id_callback(){
-  $twitter_id = esc_attr( get_option( 'video_wallpaper_twitter_id' ) );
+  $options = get_option('video_wallpaper_social_settings');
 
-  ?><input name="video_wallpaper_twitter_id"
-           id="video_wallpaper_twitter_id"
+  ?><input name="video_wallpaper_social_settings[twitter_id]"
            type="text"
-           value="<?php echo $twitter_id ?>" /><?php
+           value="<?php echo $options['twitter_id'] ?>" /><?php
 }
 
+function video_wallpaper_settings_validate($input){
+  $options = get_option('video_wallpaper_social_settings');
+
+  $options['facebook_id'] = sanitize_text_field($input['facebook_id']);
+  $options['instagram_id'] = sanitize_text_field($input['instagram_id']);
+  $options['twitter_id'] = sanitize_text_field($input['twitter_id']);
+
+  return $options;
+}
 
 /**
  * Render Social Links on home page
@@ -100,9 +107,10 @@ function video_wallpaper_twitter_id_callback(){
  */
 
 function video_wallpaper_social_links(){
-  $facebook_id = esc_attr( get_option( 'video_wallpaper_facebook_id' ) );
-  $instagram_id = esc_attr( get_option( 'video_wallpaper_instagram_id' ) );
-  $twitter_id = esc_attr( get_option( 'video_wallpaper_twitter_id' ) );
+  $options = get_option('video_wallpaper_social_settings');
+  $facebook_id = $options['facebook_id'];
+  $instagram_id = $options['instagram_id'];
+  $twitter_id = $options['twitter_id'];
 
   ?>
   <div class="social-nav">

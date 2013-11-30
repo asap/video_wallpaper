@@ -71,10 +71,12 @@ function video_wallpaper_options_callback(){
     <?php screen_icon(); ?>
     <h2>Video Wallpaper Settings</h2>
 
-    <?php settings_fields( $option_group ); ?>
+    <form method="post" action="options.php">
+      <?php settings_fields( 'video_wallpaper_settings_group' ); ?>
 
-    <?php do_settings_sections( 'video_wallpaper_options' ); ?>
-    <?php submit_button('Save Changes'); ?>
+      <?php do_settings_sections( 'video_wallpaper_options' ); ?>
+      <?php submit_button(); ?>
+    </form>
   </div><?php
 }
 
