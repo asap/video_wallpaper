@@ -94,7 +94,8 @@ $image_url = $options['image_url'];
 
 if( !is_front_page() ) {
     if( has_post_thumbnail() ) {
-        $image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' )[0]; 
+        $images = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' ); 
+        $image_url = $images[0];
     }
 }
 
@@ -129,7 +130,8 @@ $video_url_alt = $options['video_url_alt'];
 
 if( !is_front_page() ) {
     if( has_post_thumbnail() ) {
-        $image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' )[0]; 
+        $images = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
+        $image_url = $images[0];
     }
 
     if( get_post_meta( $post->ID, 'video_url', true ) ) {
@@ -148,8 +150,6 @@ jQuery(function($) {
         image,
         source,
         video;
-
-    <?php echo "//Foo"; ?>
 
     <?php if($image_url) : ?>
     image = '<?php echo $image_url; ?>';
