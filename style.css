@@ -427,13 +427,25 @@ hr {
 article{
 }
 
-#content{
+body.page #content article{
+    background-color: #869bb6;
+    margin: 25px;
+    opacity: 0.6;
+    padding: 20px;
+}
+
+body.single #content{
     background-color: #693d4a;
     float: right;
-    margin: 25px;
-    padding: 20px;
-    opacity: 0.6;
     width: 75%;
+
+    margin: 25px;
+    opacity: 0.6;
+    padding: 20px;
+}
+
+body.page #primary #content .gallery dl{
+    margin: 0 0 40px 0;
 }
 
 #content nav{
