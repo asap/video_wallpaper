@@ -54,6 +54,7 @@ function video_wallpaper_wallpaper_section_callback(){
   <p>This is the default wallpaper/background for the site</p>
   <p>To override the wallpaper for individual pages or posts, use the options on the post/page edit screen</p>
   </p>
+  <p>Blog posts will not have a video wallpaper, as this will be distracting to readers</p>
 <?php
 }
 
@@ -82,6 +83,38 @@ function video_wallpaper_image_url_callback(){
            type="text" style="width: 400px;"
            value="<?php echo $options['image_url']; ?>" />
     <p class="description">Image to be used in place of video on mobile devices or before the video loads</p><?php
+}
+
+function video_wallpaper_do_static(){
+// Renders the JS that creates the static image wallpaper
+global $post;
+
+$options = get_option('video_wallpaper_wallpaper_settings');
+$image_url = $options['image_url'];
+
+if( !is_front_page() ) {
+    if( has_post_thumbnail() ) {
+        $image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' )[0]; 
+    }
+}
+
+?><script type="text/javascript">
+jQuery(function($) {
+
+    var source;
+
+    <?php if($image_url) : ?>
+    source = '<?php echo $image_url; ?>';
+    <?php endif; ?>
+    
+    var BV = new $.BigVideo({
+        controls: false
+    });
+    BV.init();
+    BV.show(source);
+});
+</script>
+<?php
 }
 
 function video_wallpaper_do_wallpaper(){
@@ -115,6 +148,8 @@ jQuery(function($) {
         image,
         source,
         video;
+
+    <?php echo "//Foo"; ?>
 
     <?php if($image_url) : ?>
     image = '<?php echo $image_url; ?>';
