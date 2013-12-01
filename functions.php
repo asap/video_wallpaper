@@ -8,6 +8,8 @@
  * @since Twenty Thirteen 1.0
  */
 
+define("VW_SETTINGS_URL", 'options-general.php?page=video_wallpaper_options');
+
 /**
  * Video_Wallpaper setup.
  *

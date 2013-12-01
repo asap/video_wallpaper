@@ -13,9 +13,6 @@
  * @return void
  */
 function video_wallpaper_custom_post_meta(){
-    // $post = get_post();
-
-    // add_post_meta($post->id, 'video_url', '');
 
     add_meta_box(
         'video_url',
@@ -38,8 +35,25 @@ function video_wallpaper_render_video_url_meta_box( $post ){
      */
     $video_url     = get_post_meta( $post->ID, 'video_url', true );
     $video_url_alt = get_post_meta( $post->ID, 'video_url_alt', true );
+    $video_disabled = get_post_meta( $post->ID, 'video_disabled', true );
 
     ?>
+    <p class="description">
+      Video Wallpaper is set in the <a href="<?php echo VW_SETTINGS_URL; ?>">
+      Settings</a> panel for the entire site.
+      Override global settings for this specific page here.
+    </p>
+    <label for="video_wallpaper_disable_video">
+      Turn off Video for just this page?</label>
+    <input type="checkbox" id="video_wallpaper_disable_video"
+          name="video_wallpaper_disable_video"
+          value="1" <?php checked( $video_disabled, 1 ); ?> />
+    <br />
+    <br />
+    <br />
+    <p class="description">
+      Override global video for just this page
+    </p>
     <label for="video_wallpaper_video_url">Video URL</label>
     <input type="text" id="video_wallpaper_video_url"
          name="video_wallpaper_video_url"
@@ -50,6 +64,13 @@ function video_wallpaper_render_video_url_meta_box( $post ){
          name="video_wallpaper_video_url_alt"
          value="<?php echo esc_attr( $video_url_alt ); ?>" size="50" />
 
+    <br />
+    <br />
+    <br />
+    <p class="description">
+      Use the Featured Image on the left to replace the Background Image
+      for just this page
+    </p>
 
     <?php
 }
@@ -91,9 +112,11 @@ function video_wallpaper_save_postdata( $post_id ) {
   // Sanitize user input.
   $video_url = sanitize_text_field( $_POST['video_wallpaper_video_url'] );
   $video_url_alt = sanitize_text_field( $_POST['video_wallpaper_video_url_alt'] );
+  $video_disabled = $_POST['video_wallpaper_disable_video'];
 
   // Update the meta field in the database.
   update_post_meta( $post_id, 'video_url', $video_url );
   update_post_meta( $post_id, 'video_url_alt', $video_url_alt );
+  update_post_meta( $post_id, 'video_disabled', $video_disabled );
 }
 add_action( 'save_post', 'video_wallpaper_save_postdata' );
