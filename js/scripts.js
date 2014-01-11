@@ -22,9 +22,13 @@
         //     nav.toggleClass( 'toggled-on' );
         // } );
 
-        $( '.menu-toggle' ).on( 'click', function() {
+        $('.menu-toggle' ).on( 'click', function() {
             $('#navbar').toggleClass( 'exposed' );
         } );
+
+        setTimeout(function(){
+            $('#navbar').removeClass( 'exposed' );
+        }, 1000);
     } )();
 
 } )( jQuery );
