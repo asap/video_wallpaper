@@ -127,6 +127,7 @@ $options = get_option('video_wallpaper_wallpaper_settings');
 $image_url = $options['image_url'];
 $video_url = $options['video_url'];
 $video_url_alt = $options['video_url_alt'];
+$video_disabled = get_post_meta( $post->ID, 'video_disabled', true );
 
 if( !is_front_page() ) {
     if( has_post_thumbnail() ) {
@@ -151,15 +152,15 @@ jQuery(function($) {
         source,
         video;
 
-    <?php if($image_url) : ?>
+    <?php if( $image_url ) : ?>
     image = '<?php echo $image_url; ?>';
     <?php endif; ?>
 
-    <?php if($video_url) : ?>
+    <?php if( $video_url && !$video_disabled ) : ?>
     video = '<?php echo $video_url; ?>';
     <?php endif; ?>
 
-    <?php if($video_url_alt) : ?>
+    <?php if( $video_url_alt && !$video_disabled ) : ?>
     alt = '<?php echo $video_url_alt; ?>';
     <?php endif; ?>
 

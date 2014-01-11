@@ -427,13 +427,32 @@ hr {
 article{
 }
 
-#content{
+body.page #content article{
+    background-color: #869bb6;
+    background-color: rgba(134, 155, 182, .6);
+    margin: 25px 80px;
+    padding: 20px;
+}
+
+body.single #content{
     background-color: #693d4a;
+    background-color: rgba(105, 61, 74, .6);
     float: right;
+    width: 75%;
+
     margin: 25px;
     padding: 20px;
-    opacity: 0.6;
-    width: 75%;
+}
+
+body.page #primary #content .gallery dl{
+    margin: 0 0 40px 0;
+}
+
+.gallery a{
+    opacity: 0.8;
+}
+.gallery a:hover{
+    opacity: 0.9;
 }
 
 #content nav{

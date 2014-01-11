@@ -8,6 +8,8 @@
  * @since Twenty Thirteen 1.0
  */
 
+define("VW_SETTINGS_URL", 'options-general.php?page=video_wallpaper_options');
+
 /**
  * Video_Wallpaper setup.
  *
@@ -32,8 +34,16 @@ function video_wallpaper_setup() {
      */
     add_theme_support( 'post-thumbnails' );
     set_post_thumbnail_size( 604, 270, true );
+    add_image_size( 'gallery_thumb', 380, 380, true );
 }
 add_action( 'after_setup_theme', 'video_wallpaper_setup' );
+
+function video_wallpaper_custom_image_sizes( $sizes ){
+  return array_merge( $sizes, array(
+      'gallery_thumb' => __('Large Gallery Thumbnails'),
+  ) );
+}
+add_filter( 'image_size_names_choose', 'video_wallpaper_custom_image_sizes');
 
 /**
  * Video_Wallpaper Options and settings.
