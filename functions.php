@@ -35,8 +35,57 @@ function video_wallpaper_setup() {
 }
 add_action( 'after_setup_theme', 'video_wallpaper_setup' );
 
+/**
+ * Video_Wallpaper Options and settings.
+ *
+ * Sets up configurable options for the theme, such as social links
+ *
+ * @uses add_options_page() To create options page
+ * @uses settings_fields()
+ * @uses do_settings_sections()
+ * @uses screen_icon()
+ * @uses submit_button()
+ *
+ * @since Video Wallpaper 1.0
+ *
+ * @return void
+ */
 
-if ( ! function_exists( 'tvideo_wallpaper_paging_nav' ) ) :
+function video_wallpaper_admin_menu(){
+  add_options_page(
+    'Video Wallpaper Options',
+    'Video Wallpaper',
+    'manage_options',
+    'video_wallpaper_options',
+    'video_wallpaper_options_callback'
+  );
+}
+add_action( 'admin_menu', 'video_wallpaper_admin_menu');
+
+function video_wallpaper_options_callback(){
+  if ( !current_user_can( 'manage_options' ) )  {
+    wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+  }
+  ?>
+  <div class="wrap">
+    <?php screen_icon(); ?>
+    <h2>Video Wallpaper Settings</h2>
+
+    <form method="post" action="options.php">
+      <?php settings_fields( 'video_wallpaper_settings_group' ); ?>
+
+      <?php do_settings_sections( 'video_wallpaper_options' ); ?>
+      <?php submit_button(); ?>
+    </form>
+  </div><?php
+}
+
+// Individual settings are defined in their respective plugin folders
+// Social settings -> social.php
+
+
+
+if ( ! function_exists( 'video_wallpaper_paging_nav' ) ) :
 /**
  * Display navigation to next/previous set of posts when applicable.
  *
@@ -100,102 +149,6 @@ function video_wallpaper_post_nav() {
 }
 endif;
 
-
-
-/**
- * Meta Boxes and custom fields
- *
- * @since Twenty Thirteen 1.0
- *
- * @return void
- */
-function video_wallpaper_custom_post_meta(){
-    // $post = get_post();
-
-    // add_post_meta($post->id, 'video_url', '');
-
-    add_meta_box(
-        'video_url',
-        'Video Wallpaper',
-        'video_wallpaper_render_video_url_meta_box'
-    );
-}
-add_action( 'add_meta_boxes', 'video_wallpaper_custom_post_meta');
-
-function video_wallpaper_render_video_url_meta_box( $post ){
-    // Add an nonce field so we can check for it later.
-    wp_nonce_field(
-        'video_wallpaper_custom_box',
-        'video_wallpaper_custom_box_nonce'
-    );
-
-    /*
-     * Use get_post_meta() to retrieve an existing value
-     * from the database and use the value for the form.
-     */
-    $video_url     = get_post_meta( $post->ID, 'video_url', true );
-    $video_url_alt = get_post_meta( $post->ID, 'video_url_alt', true );
-
-    ?>
-    <label for="video_wallpaper_video_url">Video URL</label>
-    <input type="text" id="video_wallpaper_video_url"
-         name="video_wallpaper_video_url"
-         value="<?php echo esc_attr( $video_url ); ?>" size="50" />
-    <br />
-    <label for="video_wallpaper_video_url_alt">Alt Video</label>
-    <input type="text" id="video_wallpaper_video_url_alt"
-         name="video_wallpaper_video_url_alt"
-         value="<?php echo esc_attr( $video_url_alt ); ?>" size="50" />
-
-
-    <?php
-}
-
-function video_wallpaper_save_postdata( $post_id ) {
-    /*
-   * We need to verify this came from the our screen and with proper authorization,
-   * because save_post can be triggered at other times.
-   */
-
-  // Check if our nonce is set.
-  if ( ! isset( $_POST['video_wallpaper_custom_box_nonce'] ) )
-    return $post_id;
-
-  $nonce = $_POST['video_wallpaper_custom_box_nonce'];
-
-  // Verify that the nonce is valid.
-  if ( ! wp_verify_nonce( $nonce, 'video_wallpaper_custom_box' ) )
-      return $post_id;
-
-  // If this is an autosave, our form has not been submitted, so we don't want to do anything.
-  if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
-      return $post_id;
-
-  // Check the user's permissions.
-  if ( 'page' == $_POST['post_type'] ) {
-
-    if ( ! current_user_can( 'edit_page', $post_id ) )
-        return $post_id;
-  
-  } else {
-
-    if ( ! current_user_can( 'edit_post', $post_id ) )
-        return $post_id;
-  }
-
-  /* OK, its safe for us to save the data now. */
-
-  // Sanitize user input.
-  $video_url = sanitize_text_field( $_POST['video_wallpaper_video_url'] );
-  $video_url_alt = sanitize_text_field( $_POST['video_wallpaper_video_url_alt'] );
-
-  // Update the meta field in the database.
-  update_post_meta( $post_id, 'video_url', $video_url );
-  update_post_meta( $post_id, 'video_url_alt', $video_url_alt );
-}
-add_action( 'save_post', 'video_wallpaper_save_postdata' );
-
-
 /**
  * Enqueue scripts and styles for the front end.
  *
@@ -224,3 +177,13 @@ function video_wallpaper_scripts_styles() {
     wp_enqueue_style( 'video_wallpaper-style', get_stylesheet_uri(), array(), '2013-11-14' );
 }
 add_action( 'wp_enqueue_scripts', 'video_wallpaper_scripts_styles' );
+
+// Load plugins
+define("VW_THEME_DIR", dirname(__FILE__) . "/");
+define("VW_PLUGIN_DIR", VW_THEME_DIR . "plugins/");
+
+require_once VW_PLUGIN_DIR . 'meta_box.php';
+require_once VW_PLUGIN_DIR . 'social.php';
+require_once VW_PLUGIN_DIR . 'wallpaper.php';
+
+

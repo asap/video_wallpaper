@@ -44,5 +44,6 @@
     <nav id="site-navigation" class="navigation main-navigation" role="navigation">
         <h3 class="menu-toggle">Browse</h3>
         <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
+        <?php if(function_exists(video_wallpaper_social_links)) video_wallpaper_social_links(); ?>
     </nav><!-- #site-navigation -->
 </div><!-- navbar -->
