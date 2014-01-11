@@ -430,7 +430,7 @@ article{
 body.page #content article{
     background-color: #869bb6;
     background-color: rgba(134, 155, 182, .6);
-    margin: 25px;
+    margin: 25px 80px;
     padding: 20px;
 }
 
