@@ -169,7 +169,7 @@ jQuery(function($) {
 
     var BV = new $.BigVideo({
         controls: false,
-        doLoop: true,
+        doLoop: false,
         useFlashForFirefox:false
     });
     BV.init();
