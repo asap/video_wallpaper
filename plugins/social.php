@@ -47,6 +47,14 @@ function video_wallpaper_social_settings_init(){
     'video_wallpaper_social_section'
   );
 
+  add_settings_field(
+    'video_wallpaper_youtube_id',
+    'YouTube ID',
+    'video_wallpaper_youtube_id_callback',
+    'video_wallpaper_options',
+    'video_wallpaper_social_section'
+  );
+
   register_setting(
     'video_wallpaper_settings_group',
     'video_wallpaper_social_settings',
@@ -88,12 +96,21 @@ function video_wallpaper_twitter_id_callback(){
            value="<?php echo $options['twitter_id'] ?>" /><?php
 }
 
+function video_wallpaper_youtube_id_callback(){
+  $options = get_option('video_wallpaper_social_settings');
+
+  ?><input name="video_wallpaper_social_settings[youtube_id]"
+           type="text"
+           value="<?php echo $options['youtube_id'] ?>" /><?php
+}
+
 function video_wallpaper_settings_validate($input){
   $options = get_option('video_wallpaper_social_settings');
 
   $options['facebook_id'] = sanitize_text_field($input['facebook_id']);
   $options['instagram_id'] = sanitize_text_field($input['instagram_id']);
   $options['twitter_id'] = sanitize_text_field($input['twitter_id']);
+  $options['youtube_id'] = sanitize_text_field($input['youtube_id']);
 
   return $options;
 }
@@ -111,6 +128,7 @@ function video_wallpaper_social_links(){
   $facebook_id = $options['facebook_id'];
   $instagram_id = $options['instagram_id'];
   $twitter_id = $options['twitter_id'];
+  $youtube_id = $options['youtube_id'];
 
   ?>
   <div class="social-nav">
@@ -126,6 +144,10 @@ function video_wallpaper_social_links(){
 
     if( ! empty( $instagram_id ) ) :
       ?><li><a href="http://instagram.com/<?php echo $instagram_id; ?>" class="instagram" target="_blank">Instagram</a></li><?php
+    endif;
+
+    if( ! empty( $youtube_id ) ) :
+      ?><li><a href="http://www.youtube.com/channel/<?php echo $youtube_id; ?>" class="youtube" target="_blank">Youtube</a></li><?php
     endif;
 
     ?></ul>
