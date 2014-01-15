@@ -568,6 +568,26 @@ article,
     background: url(img/sprites.png) 11px -158px transparent no-repeat;
 }
 
+.social-nav li a.googleplus{
+    background: url(img/sprites.png) -134px -158px transparent no-repeat;
+}
+
+.social-nav li a.youtube{
+    background: url(img/sprites.png) 11px -219px transparent no-repeat;
+}
+
+.social-nav li a.vimeo{
+    background: url(img/sprites.png) -60px -219px transparent no-repeat;
+}
+
+.social-nav li a.pinterest{
+    background: url(img/sprites.png) -136px -219px transparent no-repeat;
+}
+
+.social-nav li a.linkedin{
+    background: url(img/sprites.png) -204px -219px transparent no-repeat;
+}
+
 ul#menu-main{
     min-width: 696px;
     list-style: none;
