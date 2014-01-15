@@ -147,7 +147,7 @@ function video_wallpaper_social_links(){
     endif;
 
     if( ! empty( $youtube_id ) ) :
-      ?><li><a href="http://youtube.com/user/<?php echo $youtube_id; ?>" class="youtube" target="_blank">Youtube</a></li><?php
+      ?><li><a href="http://www.youtube.com/channel/<?php echo $youtube_id; ?>" class="youtube" target="_blank">Youtube</a></li><?php
     endif;
 
     ?></ul>
