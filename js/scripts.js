@@ -18,17 +18,28 @@
             return;
         }
 
-        // $( '.menu-toggle' ).on( 'click', function() {
-        //     nav.toggleClass( 'toggled-on' );
-        // } );
-
         $('.menu-toggle' ).on( 'click', function() {
             $('#navbar').toggleClass( 'exposed' );
         } );
 
-        setTimeout(function(){
-            $('#navbar').removeClass( 'exposed' );
-        }, 1000);
+        if (!Modernizr.touch) {
+            setTimeout(function(){
+                $('#navbar').removeClass( 'exposed' );
+            }, 1000);
+        }
+
+        window.addEventListener('orientationchange', function(){
+            switch (window.orientation) {
+              case -90:
+              case 90:
+                $('#navbar').addClass( 'exposed' );
+                break;
+              default:
+                $('#navbar').removeClass( 'exposed' );
+                break;
+            }
+        });
+
     } )();
 
 } )( jQuery );

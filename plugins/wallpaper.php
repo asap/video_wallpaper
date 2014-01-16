@@ -173,7 +173,11 @@ jQuery(function($) {
         useFlashForFirefox:false
     });
     BV.init();
-    BV.show(source, {altSource: altSource});
+    if (Modernizr.touch) {
+        BV.show(image);
+    } else {
+        BV.show(source, {altSource: altSource});
+    }
 });
 </script>
 <?php

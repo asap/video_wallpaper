@@ -15,16 +15,6 @@
 
 ?>
 
-<style type="text/css">
-.article_alignment_left{
-    width: 60%;
-}
-.article_alignment_right{
-    float: right;
-    width: 60%;
-}
-</style>
-
 <article id="post-<?php the_ID(); ?>" <?php post_class($classes); ?>>
 
     <header class="entry-header">
