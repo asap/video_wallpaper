@@ -13,9 +13,21 @@ Text Domain: video_walpaper
 
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Raleway:400,700);
 
+@font-face {
+    font-family: 'castro_script_personal_use_Rg';
+    src: url('castroscript_personal_use_only-webfont.eot');
+    src: url('castroscript_personal_use_only-webfont.eot?#iefix') format('embedded-opentype'),
+         url('castroscript_personal_use_only-webfont.woff') format('woff'),
+         url('castroscript_personal_use_only-webfont.ttf') format('truetype'),
+         url('castroscript_personal_use_only-webfont.svg#castro_script_personal_use_Rg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 /*font-family: 'Source Sans Pro', sans-serif;*/
 /*font-family: 'Raleway', sans-serif;*/
-
+/*font-family: 'castro_script_personal_use_Rg', cursive;*/
 
 /*** RESETS *****/
 * {
@@ -424,7 +436,8 @@ hr {
 
 /** Custom  ***/
 
-article{
+article p{
+    font-family: 'castro_script_personal_use_Rg', cursive;
 }
 
 body.page #content article{
@@ -588,6 +601,26 @@ body.page #primary #content .gallery dl{
 
 .social-nav li a.twitter{
     background: url(img/sprites.png) 11px -158px transparent no-repeat;
+}
+
+.social-nav li a.googleplus{
+    background: url(img/sprites.png) -134px -158px transparent no-repeat;
+}
+
+.social-nav li a.youtube{
+    background: url(img/sprites.png) 11px -219px transparent no-repeat;
+}
+
+.social-nav li a.vimeo{
+    background: url(img/sprites.png) -60px -219px transparent no-repeat;
+}
+
+.social-nav li a.pinterest{
+    background: url(img/sprites.png) -136px -219px transparent no-repeat;
+}
+
+.social-nav li a.linkedin{
+    background: url(img/sprites.png) -204px -219px transparent no-repeat;
 }
 
 ul#menu-main{
