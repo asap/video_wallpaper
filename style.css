@@ -11,23 +11,24 @@ Text Domain: video_walpaper
 
 */
 
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Raleway:400,700);
+/** Fonts ***/
 
-@font-face {
-    font-family: 'castro_script_personal_use_Rg';
-    src: url('castroscript_personal_use_only-webfont.eot');
-    src: url('castroscript_personal_use_only-webfont.eot?#iefix') format('embedded-opentype'),
-         url('castroscript_personal_use_only-webfont.woff') format('woff'),
-         url('castroscript_personal_use_only-webfont.ttf') format('truetype'),
-         url('castroscript_personal_use_only-webfont.svg#castro_script_personal_use_Rg') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
+@import url(http://fonts.googleapis.com/css?family=Dancing+Script:400,700|Source+Sans+Pro:400,700|Raleway:400,700);
 
 /*font-family: 'Source Sans Pro', sans-serif;*/
 /*font-family: 'Raleway', sans-serif;*/
-/*font-family: 'castro_script_personal_use_Rg', cursive;*/
+/*font-family: 'Dancing Script', cursive;*/
+
+/** Fonts ***/
+/* body: #141412; */
+/* links: #657283; */
+/* visited: #7f90a5; */
+/* hover: #ffffff; */
+/* article: #333; */
+/* blog posts: ##693d4a; */
+/* text: #ddd; */
+/* headers: ; */
+
 
 /*** RESETS *****/
 * {
@@ -121,32 +122,32 @@ h6 {
 }
 
 h1 {
-    font-size: 48px;
+    font-size: 1.6em;
     margin: 33px 0;
 }
 
 h2 {
-    font-size: 30px;
+    font-size: 1.5em;
     margin: 25px 0;
 }
 
 h3 {
-    font-size: 22px;
+    font-size: 1.4em;
     margin: 22px 0;
 }
 
 h4 {
-    font-size: 20px;
+    font-size: 1.2em;
     margin: 25px 0;
 }
 
 h5 {
-    font-size: 18px;
+    font-size: 1.1em;
     margin: 30px 0;
 }
 
 h6 {
-    font-size: 16px;
+    font-size: 1em;
     margin: 36px 0;
 }
 
@@ -436,12 +437,136 @@ hr {
 
 /** Custom  ***/
 
-article p{
-    font-family: 'castro_script_personal_use_Rg', cursive;
+
+/** Navigation ***/
+
+#navbar{
+    background: #111;
+    height: 80px;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 900;
+/*    background: #111;
+    bottom: 200px;
+    height: 100px;
+    left: -95%;
+    position: absolute;
+    width: 100%;
+
+    opacity: 0.7;
+
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+
+    z-index: 100;*/
+}
+
+#navbar .buy-album{
+    position: absolute;
+    left: 57px;
+    top: 35%;
+    z-index: 900;
+}
+
+#navbar .subscribe{
+    top: 35%;
+    position: absolute;
+    right: 25px;
+}
+
+#site-navigation{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.menu-main-container{
+    /*display: table;*/   /* Allow the centering to work */
+    /*margin: 0 auto;*/
+/*
+    display: inline;
+    float: right;
+
+    -webkit-transition: all 1.5s ease;
+    -moz-transition: all 1.5s ease;
+    -o-transition: all 1.5s ease;
+    transition-duration: all 1.5s ease;*/
+}
+
+ul#menu-main{
+    min-width: 696px;
+    list-style: none;
+}
+ul#menu-main li {
+    display: inline;
+}
+ul#menu-main li a{
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2em;
+    padding: 10px;
+    text-transform: uppercase;
+
+/*    -webkit-transition: color 0.5s ease;
+    -moz-transition: color 0.5s ease;
+    -o-transition: color 0.5s ease;
+    transition: color 0.5s ease;*/
+}
+ul#menu-main li a:hover{
+    text-decoration: none;
+}
+
+ul#menu-main li.menu-item-home a{
+    font-size: 2em;
+}
+
+/** Index Page ***/
+
+body.home article p{
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+}
+
+
+body.home article{
+    background: #333;
+    float: left;
+    margin: 10px;
+    padding: 10px 15px;
+    width: 30%;
+}
+
+body.home article a.post-thumbnail{
+    /*height: 150px;*/
+    /*width: 150px;*/
+    float: left;
+    margin: 0 15px 0 0;
+    /*display: inline;*/
+}
+
+body.home article header{
+    float: left;
+    display: block;
+    width: 55%;
+}
+
+body.home article header h1{
+    margin: 0;
+}
+
+body.home article .entry-summary{
+}
+
+/** Articles ***/
+
+body.page article p{
+    font-family: 'Dancing Script', cursive;
 }
 
 body.page #content article{
-    background-color: #869bb6;
+    background-color: #333;
     background-color: rgba(134, 155, 182, .6);
     margin: 25px 80px;
     padding: 20px;
@@ -457,15 +582,12 @@ body.single #content{
     padding: 20px;
 }
 
-body.page #primary #content .gallery dl{
-    margin: 0 0 40px 0;
+.article_alignment_left{
+    width: 60%;
 }
-
-.gallery a{
-    opacity: 0.8;
-}
-.gallery a:hover{
-    opacity: 0.9;
+.article_alignment_right{
+    float: right;
+    width: 60%;
 }
 
 #content nav{
@@ -476,116 +598,49 @@ body.page #primary #content .gallery dl{
     padding: 0 10px;
 }
 
-.article_alignment_left{
-    width: 60%;
-}
-.article_alignment_right{
-    float: right;
-    width: 60%;
+/* Gallery ***/
+
+body.page #primary #content .gallery dl{
+    margin: 0 0 40px 0;
 }
 
-#orientation-warning{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    background: #666;
-    opacity: 0.9;
-    display: none;
-    padding: 20px;
-    text-align: center;
-    margin: 0 auto;
+
+.gallery a{
+    opacity: 0.8;
 }
+.gallery a:hover{
+    opacity: 0.9;
+}
+
+/** Video Wrapper ***/
 
 #big-video-wrap{
     position: absolute;
     z-index: -100;
 }
 
-#navbar{
-    background: #111;
-    bottom: 200px;
-    height: 100px;
-    left: -95%;
-    position: absolute;
-    width: 100%;
 
-    opacity: 0.7;
-
-    -webkit-transition: all 1s ease-in-out;
-    -moz-transition: all 1s ease-in-out;
-    -o-transition: all 1s ease-in-out;
-    transition: all 1s ease-in-out;
-
-    z-index: 100;
-}
-
-#navbar.exposed{
-    left: 0;
-}
-
-#site-navigation{
-    height: 84px;
-}
-
-#navbar.exposed .menu-toggle{
-    background: url(img/sprites.png) 0 0 transparent no-repeat;
-}
-
-.menu-toggle{
-    background: url(img/sprites.png) -183px 0 transparent no-repeat;
-    
-    display: inline;
-    float: right;
-    height: 84px;
-
-    overflow: hidden;
-
-    text-indent: 100%;
-    white-space: nowrap;
-    width: 80px;
-
-
-    -webkit-transition: opacity 1s ease-in-out;
-    -moz-transition: opacity 1s ease-in-out;
-    -o-transition: opacity 1s ease-in-out;
-    transition: opacity 1s ease-in-out;
-}
-
-.menu-main-container{
-    /*display: table;*/   /* Allow the centering to work */
-    /*margin: 0 auto;*/
-
-    display: inline;
-    float: right;
-
-    -webkit-transition: all 1.5s ease;
-    -moz-transition: all 1.5s ease;
-    -o-transition: all 1.5s ease;
-    transition-duration: all 1.5s ease;
-}
+/** Social ***/
 
 .social-nav{
-    float: right;
+    /*float: right;*/
 }
 
 .social-nav ul{
-    min-width: 696px;
+    /*min-width: 696px;*/
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 .social-nav li{
     display: inline;
-    float: right;
+    /*float: right;*/
 }
 .social-nav li a{
-    display: inline;
-    float: right;
+    display: inline-block;
     height: 64px;
-
+    margin: 5px;
     overflow: hidden;
-
     text-indent: 100%;
     white-space: nowrap;
     width: 64px;
@@ -623,40 +678,29 @@ body.page #primary #content .gallery dl{
     background: url(img/sprites.png) -204px -219px transparent no-repeat;
 }
 
-ul#menu-main{
-    min-width: 696px;
-    list-style: none;
-    padding-top: 20px;
-}
-ul#menu-main li {
-    display: inline;
-}
-ul#menu-main li a{
-    font-family: 'Raleway', sans-serif;
-    font-size: 2em;
-    padding: 10px;
-    text-transform: uppercase;
 
-    -webkit-transition: color 0.5s ease;
-    -moz-transition: color 0.5s ease;
-    -o-transition: color 0.5s ease;
-    transition: color 0.5s ease;
+/** Footer ***/
+footer{
+    background-color: #000;
+    clear: both;
+    height: 80px;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    z-index: 885;
 }
-ul#menu-main li a:hover{
-    text-decoration: none;
-};
 
 /** Responsive ***/
 
 @media screen and (max-width: 768px) {
-    #navbar{
+/*    #navbar{
         background: red;
         opacity: 1;
-    }
+    }*/
 }
 
 @media screen and (max-width: 568px) {
-    h1 {
+/*    h1 {
         font-size: 1.5em;
         margin: 5px 0;
     }
@@ -747,20 +791,20 @@ ul#menu-main li a:hover{
     #gallery-1 img{
         height: 95px;
         width: 95px;
-    }
+    }*/
 }
 
 @media screen and (max-width: 480px){
-    body.page #content article,
+/*    body.page #content article,
     body.single #content,
     .article_alignment_left,
     .article_alignment_right{
         width: 480px;
-    }
+    }*/
 }
 
 @media screen and (max-width: 320px){
-    body.page #content article,
+/*    body.page #content article,
     body.single #content,
     .article_alignment_left,
     .article_alignment_right{
@@ -809,6 +853,6 @@ ul#menu-main li a:hover{
     #gallery-1 img{
         height: 75px;
         width: 75px;
-    }
+    }*/
 
 }

@@ -39,11 +39,10 @@
 <body <?php body_class(); ?>>
 
 <!--[if lt IE 8]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-<div id="orientation-warning">Please rotate your device to landscape position for the best experience</div>
-<div id="navbar" class="navbar exposed">
+<header id="navbar" class="navbar exposed">
+    <div class="buy-album"><a href="#">Buy Album</a></div>
     <nav id="site-navigation" class="navigation main-navigation" role="navigation">
-        <h3 class="menu-toggle">Menu</h3>
         <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
-        <?php if(function_exists(video_wallpaper_social_links)) video_wallpaper_social_links(); ?>
     </nav><!-- #site-navigation -->
-</div><!-- navbar -->
+    <div class="subscribe"><a href="#">Subscribe</a></div>
+</header><!-- navbar -->

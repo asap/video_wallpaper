@@ -195,6 +195,6 @@ define("VW_PLUGIN_DIR", VW_THEME_DIR . "plugins/");
 
 require_once VW_PLUGIN_DIR . 'meta_box.php';
 require_once VW_PLUGIN_DIR . 'social.php';
-require_once VW_PLUGIN_DIR . 'wallpaper.php';
+// require_once VW_PLUGIN_DIR . 'wallpaper.php';
 
 
