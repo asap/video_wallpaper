@@ -569,27 +569,35 @@ body.home article header h1{
 body.home article .entry-summary{
 }
 
-/** Articles ***/
-
-body.page article p{
-    font-family: 'Dancing Script', cursive;
-}
-
-body.page #content article{
-    background-color: #333;
-    background-color: rgba(134, 155, 182, .6);
-    margin: 25px 80px;
+#primary,
+#sidebar{
+    background-color: rgba(51,51,51, .7);
+    float: left;
+    margin: 25px 15px;
     padding: 20px;
 }
+#primary{
+    width: 70%;
+}
+#sidebar{
+    width: 25%;
+}
 
-body.single #content{
-    background-color: #693d4a;
-    background-color: rgba(105, 61, 74, .6);
-    float: right;
-    width: 75%;
+#sidebar > ul{
+    list-style: none;
+    padding: 0;
+}
 
-    margin: 25px;
-    padding: 20px;
+#sidebar > ul > li,
+#sidebar > ul > aside{
+    background: #333;
+    margin: 10px;
+    padding: 10px 15px;
+}
+
+#sidebar > ul > li > h2,
+#sidebar > ul > aside.widget h1.widget-title{
+    margin: 0;
 }
 
 /** Articles ***/
@@ -634,6 +642,38 @@ body.page #primary #content .gallery dl{
     z-index: -100;
 }
 
+
+/* Assistive text */
+
+.screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute;
+}
+
+.screen-reader-text:focus {
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    clip: auto;
+    color: #21759b;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    height: auto;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    text-decoration: none;
+    text-transform: none;
+    width: auto;
+    z-index: 100000; /* Above WP toolbar */
+}
+
+.hide {
+    display: none;
+}
 
 /** Social ***/
 

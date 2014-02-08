@@ -188,6 +188,26 @@ function video_wallpaper_scripts_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'video_wallpaper_scripts_styles' );
 
+/**
+ * Register Video Wallpaper widget areas.
+ *
+ * @since Twenty Fourteen 1.0
+ *
+ * @return void
+ */
+function video_wallpaper_widgets_init() {
+  register_sidebar( array(
+    'name'          => 'Home Page Sidebar',
+    'id'            => 'sidebar-1',
+    'description'   => 'Sidebar that appears on the Home page.',
+    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+    'after_widget'  => '</aside>',
+    'before_title'  => '<h1 class="widget-title">',
+    'after_title'   => '</h1>',
+  ) );
+}
+add_action( 'widgets_init', 'video_wallpaper_widgets_init' );
+
 // Load plugins
 define("VW_THEME_DIR", dirname(__FILE__) . "/");
 define("VW_PLUGIN_DIR", VW_THEME_DIR . "plugins/");
