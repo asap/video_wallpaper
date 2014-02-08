@@ -170,7 +170,8 @@ jQuery(function($) {
     var BV = new $.BigVideo({
         controls: false,
         doLoop: false,
-        useFlashForFirefox:false
+        useFlashForFirefox:false,
+        container: $('#video-container')
     });
     BV.init();
     if (Modernizr.touch) {
@@ -180,5 +181,6 @@ jQuery(function($) {
     }
 });
 </script>
+<div id="video-container"></div>
 <?php
 }

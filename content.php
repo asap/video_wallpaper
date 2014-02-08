@@ -12,14 +12,13 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class($classes); ?>>
-    <a class="post-thumbnail" href="<?php the_permalink(); ?>">
-        <?php
-            // Output the featured image.
-            if ( has_post_thumbnail() ) :
-                    the_post_thumbnail( 'thumbnail' );
-            endif;
-        ?>
-    </a>
+    <?php
+        // Output the featured image.
+        if ( has_post_thumbnail() && is_home() ) : ?>
+            <a class="post-thumbnail" href="<?php the_permalink(); ?>">
+            <?php the_post_thumbnail( 'thumbnail' ); ?>
+            </a>
+    <?php endif; ?>
     <header class="entry-header">
         <?php if ( is_single() ) : ?>
         <h1 class="entry-title"><?php the_title(); ?></h1>
@@ -37,7 +36,7 @@
     </div><!-- .entry-summary -->
     <?php else : ?>
     <div class="entry-content">
-        <?php the_post_thumbnail(); ?>
+        <?php // the_post_thumbnail(); ?>
         <?php the_content( 'Continue reading <span class="meta-nav">&rarr;</span>' ); ?>
         <?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentythirteen' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
     </div><!-- .entry-content -->

@@ -13,19 +13,19 @@ Text Domain: video_walpaper
 
 /** Fonts ***/
 
-@import url(http://fonts.googleapis.com/css?family=Dancing+Script:400,700|Source+Sans+Pro:400,700|Raleway:400,700);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Raleway:400,700);
 
 /*font-family: 'Source Sans Pro', sans-serif;*/
 /*font-family: 'Raleway', sans-serif;*/
-/*font-family: 'Dancing Script', cursive;*/
 
-/** Fonts ***/
-/* body: #141412; */
+/** Colors ***/
+/* body: #212121; */
+/* navbar: #111; */
 /* links: #657283; */
 /* visited: #7f90a5; */
 /* hover: #ffffff; */
 /* article: #333; */
-/* blog posts: ##693d4a; */
+/* blog posts: #693d4a; */
 /* text: #ddd; */
 /* headers: ; */
 
@@ -81,7 +81,7 @@ textarea {
 }
 
 body {
-    background: #141412;
+    background: #212121;
     color: #ddd;
     line-height: 1.5;
     margin: 0;
@@ -523,14 +523,24 @@ ul#menu-main li.menu-item-home a{
     font-size: 2em;
 }
 
+/** All Pages ***/
+#main-content{
+    margin-top: 30px
+}
+
 /** Index Page ***/
+
+body.home #main-content{
+    margin-top: 60px
+}
 
 body.home article p{
     font-family: "Source Sans Pro", Helvetica, sans-serif;
 }
 
 
-body.home article{
+body.home article,
+body.single article.blog{
     background: #333;
     float: left;
     margin: 10px;
@@ -582,6 +592,8 @@ body.single #content{
     padding: 20px;
 }
 
+/** Articles ***/
+
 .article_alignment_left{
     width: 60%;
 }
@@ -615,7 +627,10 @@ body.page #primary #content .gallery dl{
 /** Video Wrapper ***/
 
 #big-video-wrap{
-    position: absolute;
+    float: left;
+    min-height: 500px;
+    position: fixed;
+    top: 0;
     z-index: -100;
 }
 
@@ -682,9 +697,10 @@ body.page #primary #content .gallery dl{
 /** Footer ***/
 footer{
     background-color: #000;
+    bottom: 0px;
     clear: both;
     height: 80px;
-    position: relative;
+    position: fixed;
     text-align: center;
     width: 100%;
     z-index: 885;

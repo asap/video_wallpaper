@@ -33,8 +33,7 @@ function video_wallpaper_setup() {
      * "standard" posts and pages.
      */
     add_theme_support( 'post-thumbnails' );
-    set_post_thumbnail_size( 604, 270, true );
-    add_image_size( 'gallery_thumb', 380, 380, true );
+    set_post_thumbnail_size( 604, 270, 75, true );
 }
 add_action( 'after_setup_theme', 'video_wallpaper_setup' );
 
@@ -195,6 +194,6 @@ define("VW_PLUGIN_DIR", VW_THEME_DIR . "plugins/");
 
 require_once VW_PLUGIN_DIR . 'meta_box.php';
 require_once VW_PLUGIN_DIR . 'social.php';
-// require_once VW_PLUGIN_DIR . 'wallpaper.php';
+require_once VW_PLUGIN_DIR . 'wallpaper.php';
 
 

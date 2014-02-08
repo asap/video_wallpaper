@@ -13,12 +13,6 @@ get_header(); ?>
 
 <div id="main-content" class="main-content">
 
-<?php
-if( function_exists( video_wallpaper_do_wallpaper ) ) {
-    video_wallpaper_do_wallpaper();
-}
-?>
-
     <div id="primary" class="content-area">
         <div id="content" class="site-content" role="main">
 
@@ -45,6 +39,11 @@ if( function_exists( video_wallpaper_do_wallpaper ) ) {
 
         </div><!-- #content -->
     </div><!-- #primary -->
+<?php
+if( function_exists( video_wallpaper_do_wallpaper ) ) {
+    video_wallpaper_do_wallpaper();
+}
+?>
 
 </div><!-- #main-content -->
 
