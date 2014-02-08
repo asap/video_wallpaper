@@ -733,6 +733,41 @@ body.page #primary #content .gallery dl{
     background: url(img/sprites.png) -204px -219px transparent no-repeat;
 }
 
+/** Twitter Pro WP Plugin ***/
+/* http://wordpress.org/plugins/twitter-widget-pro/ */
+
+aside.widget_twitter h1.widget-title .twitterwidget-title{
+    float: left;
+}
+aside.widget_twitter .twitter-avatar{
+    float: right;
+}
+aside.widget_twitter ul{
+    float: left;
+    list-style: none;
+    padding: 0;
+}
+aside.widget_twitter ul li{
+    margin: 13px 0;
+}
+
+aside.widget_twitter ul li a {
+    color: #d3d3d3;
+}
+
+aside.widget_twitter ul li .entry-meta,
+aside.widget_twitter ul li .intent-meta {
+    display: block;
+    font-size: 0.75em;
+}
+aside.widget_twitter ul li .entry-meta,
+aside.widget_twitter ul li .entry-meta a{
+    color: #999;
+}
+aside.widget_twitter ul li .intent-meta a {
+    color: #999;
+    margin-right: 8px;
+}
 
 /** Footer ***/
 footer{
