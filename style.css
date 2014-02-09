@@ -543,9 +543,10 @@ body.home article,
 body.single article.blog{
     background: #333;
     float: left;
-    margin: 10px;
+    min-height: 300px;
+    margin: 11px;
     padding: 10px 15px;
-    width: 30%;
+    width: 31%;
 }
 
 body.home article a.post-thumbnail{
@@ -767,6 +768,12 @@ aside.widget_twitter ul li .entry-meta a{
 aside.widget_twitter ul li .intent-meta a {
     color: #999;
     margin-right: 8px;
+}
+
+/** Meta Slider Plugin ***/
+
+.metaslider{
+    margin: 10px;
 }
 
 /** Footer ***/
