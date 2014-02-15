@@ -16,7 +16,7 @@ get_header(); ?>
     <div id="primary" class="content-area">
         <div id="content" class="site-content" role="main">
 
-        <?php if (shortcode_exists("metaslider")) { echo do_shortcode("[metaslider id=96]"); } ?>
+        <?php video_wallpaper_do_slider(); ?>
 
         <?php
             if ( have_posts() ) :

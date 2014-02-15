@@ -58,7 +58,7 @@ function video_wallpaper_social_settings_init(){
   register_setting(
     'video_wallpaper_settings_group',
     'video_wallpaper_social_settings',
-    'video_wallpaper_settings_validate'
+    'video_wallpaper_social_settings_validate'
   );
 
 }
@@ -104,7 +104,7 @@ function video_wallpaper_youtube_id_callback(){
            value="<?php echo $options['youtube_id'] ?>" /><?php
 }
 
-function video_wallpaper_settings_validate($input){
+function video_wallpaper_social_settings_validate($input){
   $options = get_option('video_wallpaper_social_settings');
 
   $options['facebook_id'] = sanitize_text_field($input['facebook_id']);

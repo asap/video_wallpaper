@@ -211,8 +211,11 @@ add_action( 'widgets_init', 'video_wallpaper_widgets_init' );
 // Load plugins
 define("VW_THEME_DIR", dirname(__FILE__) . "/");
 define("VW_PLUGIN_DIR", VW_THEME_DIR . "plugins/");
+define("VW_ADMIN_URL", admin_url('options-general.php?page=video_wallpaper_options'));
+define("META_SLIDER_ADMIN_URL", admin_url('admin.php?page=metaslider'));
 
 require_once VW_PLUGIN_DIR . 'meta_box.php';
+require_once VW_PLUGIN_DIR . 'homepage.php';
 require_once VW_PLUGIN_DIR . 'social.php';
 require_once VW_PLUGIN_DIR . 'wallpaper.php';
 
