@@ -215,8 +215,18 @@ define("VW_ADMIN_URL", admin_url('options-general.php?page=video_wallpaper_optio
 define("META_SLIDER_ADMIN_URL", admin_url('admin.php?page=metaslider'));
 
 require_once VW_PLUGIN_DIR . 'custom-header.php';
-require_once VW_PLUGIN_DIR . 'meta_box.php';
-require_once VW_PLUGIN_DIR . 'homepage.php';
-require_once VW_PLUGIN_DIR . 'social.php';
-require_once VW_PLUGIN_DIR . 'wallpaper.php';
+// Contains functions for changing the header image
 
+require_once VW_PLUGIN_DIR . 'meta_box.php';
+// Contains custom meta boxes for post and page edit screen
+// - Article Alignement
+
+require_once VW_PLUGIN_DIR . 'homepage.php';
+// Contains homepage settings
+// - Meta Slider Configuration
+
+require_once VW_PLUGIN_DIR . 'social.php';
+// Contains social settings used on footer
+
+require_once VW_PLUGIN_DIR . 'wallpaper.php';
+// Contains video wallpaper functions and meta box settings

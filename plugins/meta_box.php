@@ -48,6 +48,9 @@ function video_wallpaper_article_alignment_metabox( $post ){
     <p class="description">
       Sets the alignment of the content of this page.
     </p>
+    <p class="description">
+      <strong>Note:</strong> Does not work when sidebar is in use
+    </p>
     <input type="radio" id="video_wallpaper_alignment_full"
            name="video_wallpaper_alignment"
            value="full" <?php checked( $article_alignment, "full"); ?> />

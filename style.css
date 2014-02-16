@@ -528,6 +528,35 @@ ul#menu-main li.menu-item-home a{
     margin-top: 30px
 }
 
+.entry-content{
+    margin-bottom: 100px;
+}
+
+body.page-template-page-default #primary{}
+
+body.home #primary,
+body.single #primary,
+body.page-template-page-sidebar-php #primary{
+    float: left;
+    width: 70%;
+}
+body.home #sidebar,
+body.single #sidebar,
+body.page-template-page-sidebar-php #sidebar{
+    float: left;
+    width: 25%;
+}
+
+body.page-template-page-media-php #primary{
+    background-color: inherit;
+    /*margin: 25px 0;*/
+    /*width: 100%;*/
+}
+
+body.page-template-page-media-php #primary .gallery-caption{
+    display: none;
+}
+
 /** Index Page ***/
 
 body.home #main-content{
@@ -573,15 +602,9 @@ body.home article .entry-summary{
 #primary,
 #sidebar{
     background-color: rgba(51,51,51, .7);
-    float: left;
     margin: 25px 15px;
+    overflow: auto;
     padding: 20px;
-}
-#primary{
-    width: 70%;
-}
-#sidebar{
-    width: 25%;
 }
 
 #sidebar > ul{
@@ -643,6 +666,19 @@ body.page #primary #content .gallery dl{
     z-index: -100;
 }
 
+/* Contact Form 7 */
+
+.wpcf7{
+    border-right: 1px solid #ccc;
+    float: left;
+    margin-right: 30px !important;
+    width: 365px;
+}
+.wpcf7:after {
+    content: "";
+  display: table;
+  clear: both;
+}
 
 /* Assistive text */
 

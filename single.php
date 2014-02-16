@@ -45,7 +45,7 @@ get_header(); ?>
 
         </div><!-- #content -->
     </div><!-- #primary -->
-
+<?php get_sidebar( 'content' ); ?>
 <?php
 if( function_exists( video_wallpaper_do_static ) ) {
     video_wallpaper_do_static();

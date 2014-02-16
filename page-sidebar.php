@@ -1,6 +1,6 @@
 <?php
 /**
- * Default theme for pages
+ * Template Name: Page with Sidebar
  *
  * @link http://codex.wordpress.org/Template_Hierarchy
  *
@@ -17,24 +17,9 @@ get_header(); ?>
 if( function_exists( video_wallpaper_do_static ) ) {
     video_wallpaper_do_static();
 }
-
-// Shift the article to the right or left so we can show 
-// off something really awesome in the background
-
-$article_alignment = get_post_meta(
-    $post->ID,
-    'article_alignment',
-    true
-);
-
-$classes = array(
-    'article_alignment_' . $article_alignment,
-    'content-area'
-);
-
 ?>
 
-    <div id="primary" <?php post_class($classes); ?>>
+    <div id="primary" class="content-area">
         <div id="content" class="site-content" role="main">
 
             <?php /* The loop */ ?>
@@ -49,7 +34,7 @@ $classes = array(
 
         </div><!-- #content -->
     </div><!-- #primary -->
-
+<?php get_sidebar( 'content' ); ?>
 </div><!-- #main-content -->
 
 <?php get_footer(); ?>
