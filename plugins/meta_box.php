@@ -17,13 +17,16 @@ function video_wallpaper_custom_post_meta(){
     add_meta_box(
       'article_alignment',
       'Article Alignment',
-      'video_wallpaper_article_alignment_metabox'
+      'video_wallpaper_article_alignment_metabox',
+      'page'
     );
 
+  
     add_meta_box(
-        'video_url',
-        'Video Wallpaper',
-        'video_wallpaper_render_video_url_meta_box'
+      'video_url',
+      'Video Wallpaper',
+      'video_wallpaper_render_video_url_meta_box',
+      'page'
     );
 }
 add_action( 'add_meta_boxes', 'video_wallpaper_custom_post_meta');
