@@ -996,11 +996,6 @@ footer{
         display: none;
     }
 
-/*    #gallery-1 img{
-        height: 75px;
-        width: 75px;
-    }*/
-
     body.home #primary,
     body.single #primary,
     body.page-template-page-sidebar-php #primary{
@@ -1036,6 +1031,7 @@ footer{
         padding: 5px;
     }
 
+    body #main-content,
     body.home #main-content{
         margin-top: 80px;
         margin-bottom: 80px;
@@ -1043,12 +1039,10 @@ footer{
 
     /** Articles ***/
 
-    .article_alignment_left{
-        width: 60%;
-    }
+    .article_alignment_left,
     .article_alignment_right{
-        float: right;
-        width: 60%;
+        float: none;
+        width: 100%;
     }
 
     #content nav{
@@ -1061,11 +1055,22 @@ footer{
 
     /* Gallery ***/
 
-    body.page #primary #content .gallery dl{
-        margin: 0 0 40px 0;
+    body.page #primary #content .gallery {
+        float: left;
     }
 
+    body.page #primary #content .gallery dl{
+        margin: 15px
+    }
 
+    body.page #primary #content .gallery br{
+        clear: none !important;
+    }
+
+    .gallery img{
+        height: 75px;
+        width: 75px;
+    }
     .gallery a{
         opacity: 0.8;
     }
@@ -1086,10 +1091,10 @@ footer{
     /* Contact Form 7 */
 
     .wpcf7{
-        border-right: 1px solid #ccc;
+        border: none;
         float: left;
-        margin-right: 30px !important;
-        width: 365px;
+        margin: 0;
+        width: 95%;
     }
     .wpcf7:after {
         content: "";
