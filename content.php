@@ -12,13 +12,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class($classes); ?>>
-    <?php
-        // Output the featured image.
-        if ( has_post_thumbnail() && is_home() ) : ?>
-            <a class="post-thumbnail" href="<?php the_permalink(); ?>">
-            <?php the_post_thumbnail( 'thumbnail' ); ?>
-            </a>
-    <?php endif; ?>
+    
     <header class="entry-header">
         <?php if ( is_single() ) : ?>
         <h1 class="entry-title"><?php the_title(); ?></h1>
@@ -29,6 +23,14 @@
         <?php endif; // is_single() ?>
 
     </header><!-- .entry-header -->
+
+    <?php
+        // Output the featured image.
+        if ( has_post_thumbnail() && is_home() ) : ?>
+            <a class="post-thumbnail" href="<?php the_permalink(); ?>">
+            <?php the_post_thumbnail( 'thumbnail' ); ?>
+            </a>
+    <?php endif; ?>
 
     <?php if ( is_search() || is_home() ) : // Only display Excerpts for Search or Home ?>
     <div class="entry-summary">

@@ -587,9 +587,8 @@ body.home article a.post-thumbnail{
 }
 
 body.home article header{
-    float: left;
     display: block;
-    width: 55%;
+    margin: 10px 0;
 }
 
 body.home article header h1{
