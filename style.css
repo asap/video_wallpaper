@@ -440,6 +440,7 @@ hr {
 
 /** Navigation ***/
 
+#mobile-navbar,
 #navbar{
     background: #111;
     height: 80px;
@@ -448,6 +449,14 @@ hr {
     top: 0;
     width: 100%;
     z-index: 900;
+}
+
+#mobile-navbar{
+    display: none;  
+}
+
+#navbar{
+    display: block;
 /*    background: #111;
     bottom: 200px;
     height: 100px;
@@ -463,19 +472,6 @@ hr {
     transition: all 1s ease-in-out;
 
     z-index: 100;*/
-}
-
-#navbar .buy-album{
-    position: absolute;
-    left: 57px;
-    top: 35%;
-    z-index: 900;
-}
-
-#navbar .subscribe{
-    top: 35%;
-    position: absolute;
-    right: 25px;
 }
 
 #site-navigation{
@@ -942,34 +938,47 @@ footer{
     .article_alignment_left,
     .article_alignment_right{
         width: 320px;
+    }*/
+
+    #mobile-navbar{
+        display: block;
     }
 
     #navbar{
-        height: 70%;
-        opacity: 0.9;
-        bottom: -65%;
-        left: 0;
+        display: none;
     }
 
     #navbar.exposed{
-        bottom: 0;
-    }
-
-    #navbar .menu-main-container{
+        background: #111;
+        background: rgba(17, 17, 17, 0.8);
         display: block;
+        text-align: left;
+        top: 80px;
+        height:100%;
     }
 
-    #navbar.exposed .menu-toggle{
-        background: url(img/sprites.png) -56px -49px transparent no-repeat;
-    }
-
-    .menu-toggle{
-        background: url(img/sprites.png) -56px 0 transparent no-repeat;
-        display: block;
-        height: 20px;
-        text-indent: 0;
-        white-space: nowrap;
+    #site-header{
+        /*float: left;*/
         width: 120px;
+        height: 80px;
+        /*display: none;*/
+    }
+    .menu-toggle{
+        background: url(img/sprites.png) -86px -49px transparent no-repeat;
+        display: block;
+        height: 30px;
+        overflow: hidden;
+        text-indent: 100%;
+        white-space: nowrap;
+        width: 80px;
+        margin: 0;
+        float:right;
+        top: 50px;
+        position: relative;
+    }
+
+    .menu-toggle.exposed{
+        background: url(img/sprites.png) -86px 0 transparent no-repeat;
     }
 
     ul#menu-main{
@@ -983,9 +992,109 @@ footer{
         font-size: 1.5em;
     }
 
-    #gallery-1 img{
+    ul#menu-main li.menu-item-home{
+        display: none;
+    }
+
+/*    #gallery-1 img{
         height: 75px;
         width: 75px;
     }*/
+
+    body.home #primary,
+    body.single #primary,
+    body.page-template-page-sidebar-php #primary{
+        float: none;
+        width: 100%;
+    }
+
+    body.home #sidebar,
+    body.single #sidebar,
+    body.page-template-page-sidebar-php #sidebar{
+        float: none;
+        width: 100%;
+    }
+
+    body.home article,
+    body.single article.blog{
+        float: none;
+        margin: 10px auto;
+        width: 95%;
+    }
+
+    body.home article header{
+        margin: 5px 0;
+    }
+
+    body.home article header h1{
+        margin: 0;
+    }
+
+    #primary,
+    #sidebar{
+        margin: 0;
+        padding: 5px;
+    }
+
+    body.home #main-content{
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
+
+    /** Articles ***/
+
+    .article_alignment_left{
+        width: 60%;
+    }
+    .article_alignment_right{
+        float: right;
+        width: 60%;
+    }
+
+    #content nav{
+        float: right;
+    }
+
+    #content nav .nav-links a{
+        padding: 0 10px;
+    }
+
+    /* Gallery ***/
+
+    body.page #primary #content .gallery dl{
+        margin: 0 0 40px 0;
+    }
+
+
+    .gallery a{
+        opacity: 0.8;
+    }
+    .gallery a:hover{
+        opacity: 0.9;
+    }
+
+    /** Video Wrapper ***/
+
+    #big-video-wrap{
+        float: left;
+        min-height: 500px;
+        position: fixed;
+        top: 0;
+        z-index: -100;
+    }
+
+    /* Contact Form 7 */
+
+    .wpcf7{
+        border-right: 1px solid #ccc;
+        float: left;
+        margin-right: 30px !important;
+        width: 365px;
+    }
+    .wpcf7:after {
+        content: "";
+      display: table;
+      clear: both;
+    }
 
 }

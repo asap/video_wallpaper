@@ -18,6 +18,11 @@
             return;
         }
 
+        $('.menu-toggle' ).on( 'click', function() {
+            $('#navbar').toggleClass( 'exposed' );
+            $('.menu-toggle').toggleClass( 'exposed' );
+        } );
+
     } )();
 
 } )( jQuery );

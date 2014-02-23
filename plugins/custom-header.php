@@ -58,7 +58,6 @@ function video_wallpaper_header_style() {
             background-image: url(<?php echo header_image(); ?>);
             background-repeat: no-repeat;
             background-position: 0 0;
-            color: green;
             display: inline-block;
             height: <?php echo get_custom_header()->height; ?>px;
             position: relative;
@@ -66,6 +65,13 @@ function video_wallpaper_header_style() {
             top: <?php echo $top_offset; ?>px;
             width: <?php echo get_custom_header()->width; ?>px;
             white-space: nowrap;
+        }
+
+        
+        @media screen and (max-width: 320px){
+            ul#menu-main li a[title=Home]{
+                display: none;
+            }
         }
     <?php endif; ?>
     </style>

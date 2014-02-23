@@ -39,10 +39,19 @@
 <body <?php body_class(); ?>>
 
 <!--[if lt IE 8]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-<header id="navbar" class="navbar exposed">
-    <div class="buy-album"><a href="#">Buy Album</a></div>
+<header id="mobile-navbar">
+    <?php if ( get_header_image() ) : ?>
+    <span id="site-header">
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+            <img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="">
+        </a>
+    </span>
+    <h3 class="menu-toggle">Menu</h3>
+    <?php endif; ?>
+</header>
+
+<header id="navbar" class="navbar">
     <nav id="site-navigation" class="navigation main-navigation" role="navigation">
         <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
     </nav><!-- #site-navigation -->
-    <div class="subscribe"><a href="#">Subscribe</a></div>
 </header><!-- navbar -->
