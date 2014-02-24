@@ -66,7 +66,7 @@ audio:not([controls]) {
 }
 
 html {
-    font-size: 100%;
+    font-size: 62.5%;
     overflow-y: scroll;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
@@ -83,6 +83,8 @@ textarea {
 body {
     background: #212121;
     color: #ddd;
+    font-size: 14px;
+    font-size: 1.4rem;
     line-height: 1.5;
     margin: 0;
 }
@@ -122,32 +124,38 @@ h6 {
 }
 
 h1 {
-    font-size: 1.6em;
+    font-size: 16px;
+    font-size: 1.6rem;
     margin: 33px 0;
 }
 
 h2 {
-    font-size: 1.5em;
+    font-size: 15em;
+    font-size: 1.5rem;
     margin: 25px 0;
 }
 
 h3 {
-    font-size: 1.4em;
+    font-size: 14px;
+    font-size: 1.4rem;
     margin: 22px 0;
 }
 
 h4 {
-    font-size: 1.2em;
+    font-size: 12px;
+    font-size: 1.2rem;
     margin: 25px 0;
 }
 
 h5 {
-    font-size: 1.1em;
+    font-size: 11px;
+    font-size: 1.1rem;
     margin: 30px 0;
 }
 
 h6 {
-    font-size: 1em;
+    font-size: 10px;
+    font-size: 1.0rem;
     margin: 36px 0;
 }
 
@@ -457,21 +465,6 @@ hr {
 
 #navbar{
     display: block;
-/*    background: #111;
-    bottom: 200px;
-    height: 100px;
-    left: -95%;
-    position: absolute;
-    width: 100%;
-
-    opacity: 0.7;
-
-    -webkit-transition: all 1s ease-in-out;
-    -moz-transition: all 1s ease-in-out;
-    -o-transition: all 1s ease-in-out;
-    transition: all 1s ease-in-out;
-
-    z-index: 100;*/
 }
 
 #site-navigation{
@@ -502,7 +495,8 @@ ul#menu-main li {
 }
 ul#menu-main li a{
     font-family: 'Raleway', sans-serif;
-    font-size: 1.2em;
+    font-size: 16px;
+    font-size: 1.6rem;
     padding: 10px;
     text-transform: uppercase;
 
@@ -822,10 +816,63 @@ footer{
 /** Responsive ***/
 
 @media screen and (max-width: 768px) {
-/*    #navbar{
-        background: red;
-        opacity: 1;
-    }*/
+    
+}
+
+@media screen and (max-width: 768px) and (max-height: 480px) {
+    #navbar{
+        height: 40px;
+    }
+
+    ul#menu-main{
+        min-width: inherit;
+        margin: 0;
+    }
+
+    ul#menu-main li a{
+        padding: 5px;
+    }
+
+    .social-nav li a{
+        height: 32px;
+        width: 32px;
+    }
+
+    .social-nav li a.facebook{
+        background: url(img/sprites.32x32.png) -108px -75px transparent no-repeat;
+    }
+
+    .social-nav li a.instagram{
+        background: url(img/sprites.32x32.png) -33px -75px transparent no-repeat;
+    }
+
+    .social-nav li a.twitter{
+        background: url(img/sprites.32x32.png) 0 -75px transparent no-repeat;
+    }
+
+    .social-nav li a.googleplus{
+        background: url(img/sprites.32x32.png) -73px -75px transparent no-repeat;
+    }
+
+    .social-nav li a.youtube{
+        background: url(img/sprites.32x32.png) 0 -106px transparent no-repeat;
+    }
+
+    .social-nav li a.vimeo{
+        background: url(img/sprites.32x32.png) -33px -106px transparent no-repeat;
+    }
+
+    .social-nav li a.pinterest{
+        background: url(img/sprites.32x32.png) -73px -106px transparent no-repeat;
+    }
+
+    .social-nav li a.linkedin{
+        background: url(img/sprites.32x32.png) -108px -106px transparent no-repeat;
+    }
+
+    footer{
+        height: 40px;
+    }
 }
 
 @media screen and (max-width: 568px) {
@@ -923,14 +970,7 @@ footer{
     }*/
 }
 
-@media screen and (max-width: 480px){
-/*    body.page #content article,
-    body.single #content,
-    .article_alignment_left,
-    .article_alignment_right{
-        width: 480px;
-    }*/
-}
+@media screen and (max-width: 480px){}
 
 @media screen and (max-width: 320px){
 /*    body.page #content article,
@@ -958,10 +998,8 @@ footer{
     }
 
     #site-header{
-        /*float: left;*/
         width: 120px;
         height: 80px;
-        /*display: none;*/
     }
     .menu-toggle{
         background: url(img/sprites.png) -86px -49px transparent no-repeat;

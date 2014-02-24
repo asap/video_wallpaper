@@ -67,6 +67,15 @@ function video_wallpaper_header_style() {
             white-space: nowrap;
         }
 
+        @media screen and (max-width: 768px) and (max-height: 480px) {
+            ul#menu-main li a[title=Home]{
+                background-size: contain;
+                /*background-size: 61px 35px;*/
+                width: <?php echo get_custom_header()->width  / get_custom_header()->height * 35; ?>px;
+                height: 35px;
+                top: 2px;
+            }
+        }
         
         @media screen and (max-width: 320px){
             ul#menu-main li a[title=Home]{
