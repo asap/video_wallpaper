@@ -515,7 +515,8 @@ ul#menu-main li.menu-item-home a{
 
 /** All Pages ***/
 #main-content{
-    margin-top: 30px
+    margin-top: 80px;
+    margin-bottom: 80px;
 }
 
 .entry-content{
@@ -528,13 +529,13 @@ body.home #primary,
 body.single #primary,
 body.page-template-page-sidebar-php #primary{
     float: left;
-    width: 70%;
+    width: 64.583333333333%; /* 640 / 960 */
 }
 body.home #sidebar,
 body.single #sidebar,
 body.page-template-page-sidebar-php #sidebar{
     float: left;
-    width: 25%;
+    width: 31.25%; /* 300 / 960 */
 }
 
 body.page-template-page-media-php #primary{
@@ -549,8 +550,10 @@ body.page-template-page-media-php #primary .gallery-caption{
 
 /** Index Page ***/
 
-body.home #main-content{
-    margin-top: 60px
+body.home #main-content,
+body.single #main-content{
+    margin-top: 30px;
+    margin-bottom: 0;
 }
 
 body.home article p{
@@ -563,7 +566,7 @@ body.single article.blog{
     background: #333;
     float: left;
     min-height: 300px;
-    margin: 11px;
+    margin: 10px;
     padding: 10px 15px;
     width: 31%;
 }
@@ -591,9 +594,10 @@ body.home article .entry-summary{
 #primary,
 #sidebar{
     background-color: rgba(51,51,51, .7);
-    margin: 25px 15px;
+    margin: 25px 1.041666666667%; /*  25 / 720 | 10  / 960 */
     overflow: auto;
-    padding: 20px;
+    padding: 1.041666666667%; /* 10 / 960 */
+    margin-bottom: 13.888888888889%; /* 100 / 720 */
 }
 
 #sidebar > ul{
@@ -635,6 +639,11 @@ body.home article .entry-summary{
 
 body.page #primary #content .gallery dl{
     margin: 0 0 40px 0;
+}
+
+.gallery img{
+    width: 90%;
+    height: 90%;
 }
 
 
@@ -816,7 +825,54 @@ footer{
 /** Responsive ***/
 
 @media screen and (max-width: 768px) {
+
+    body.home #main-content,
+    body.single #main-content{
+        margin-top: 90px;
+    }
+
+    #primary,
+    #sidebar{
+        margin: 5px;
+        padding: 5px;
+    }
+
+    .article_alignment_left,
+    .article_alignment_right{
+        float: none;
+        width: 100%;
+    }
+
     
+    body.home article,
+    body.single article.blog{
+        float: none;
+        margin: 10px auto;
+        width: 95%;
+    }
+
+    body.home article header{
+        margin: 5px 0;
+    }
+
+    body.home article header h1{
+        margin: 0;
+    }
+
+    /* Gallery ***/
+
+    body.page #primary #content .gallery {
+        float: left;
+    }
+
+    body.page #primary #content .gallery dl{
+        margin: 15px
+    }
+
+    body.page #primary #content .gallery br{
+        clear: none !important;
+    }
+
 }
 
 @media screen and (max-width: 768px) and (max-height: 480px) {
@@ -1048,27 +1104,6 @@ footer{
         width: 100%;
     }
 
-    body.home article,
-    body.single article.blog{
-        float: none;
-        margin: 10px auto;
-        width: 95%;
-    }
-
-    body.home article header{
-        margin: 5px 0;
-    }
-
-    body.home article header h1{
-        margin: 0;
-    }
-
-    #primary,
-    #sidebar{
-        margin: 0;
-        padding: 5px;
-    }
-
     body #main-content,
     body.home #main-content{
         margin-top: 80px;
@@ -1077,43 +1112,12 @@ footer{
 
     /** Articles ***/
 
-    .article_alignment_left,
-    .article_alignment_right{
-        float: none;
-        width: 100%;
-    }
-
     #content nav{
         float: right;
     }
 
     #content nav .nav-links a{
         padding: 0 10px;
-    }
-
-    /* Gallery ***/
-
-    body.page #primary #content .gallery {
-        float: left;
-    }
-
-    body.page #primary #content .gallery dl{
-        margin: 15px
-    }
-
-    body.page #primary #content .gallery br{
-        clear: none !important;
-    }
-
-    .gallery img{
-        height: 75px;
-        width: 75px;
-    }
-    .gallery a{
-        opacity: 0.8;
-    }
-    .gallery a:hover{
-        opacity: 0.9;
     }
 
     /** Video Wrapper ***/
@@ -1136,8 +1140,8 @@ footer{
     }
     .wpcf7:after {
         content: "";
-      display: table;
-      clear: both;
+        display: table;
+        clear: both;
     }
 
 }
