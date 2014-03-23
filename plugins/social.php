@@ -202,7 +202,7 @@ function video_wallpaper_social_links(){
     <?php endif;
 
     if( ! empty( $youtube_id ) ) : ?>
-        <li><a href="http://www.youtube.com/channel/<?php echo $youtube_id; ?>" class="youtube" target="_blank">Youtube</a></li>
+        <li><a href="http://www.youtube.com/user/<?php echo $youtube_id; ?>" class="youtube" target="_blank">Youtube</a></li>
     <?php endif;
 
     if( ! empty( $soundcloud_id ) ) : ?>
