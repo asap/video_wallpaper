@@ -55,6 +55,30 @@ function video_wallpaper_social_settings_init(){
     'video_wallpaper_social_section'
   );
 
+  add_settings_field(
+    'video_wallpaper_soundcloud_id',
+    'SoundCloud ID',
+    'video_wallpaper_soundcloud_id_callback',
+    'video_wallpaper_options',
+    'video_wallpaper_social_section'
+  );
+
+  add_settings_field(
+    'video_wallpaper_reverbnation_id',
+    'ReverbNation ID',
+    'video_wallpaper_reverbnation_id_callback',
+    'video_wallpaper_options',
+    'video_wallpaper_social_section'
+  );
+
+  add_settings_field(
+    'video_wallpaper_tumblr_id',
+    'Tumblr ID',
+    'video_wallpaper_tumblr_id_callback',
+    'video_wallpaper_options',
+    'video_wallpaper_social_section'
+  );
+
   register_setting(
     'video_wallpaper_settings_group',
     'video_wallpaper_social_settings',
@@ -104,6 +128,30 @@ function video_wallpaper_youtube_id_callback(){
            value="<?php echo $options['youtube_id'] ?>" /><?php
 }
 
+function video_wallpaper_soundcloud_id_callback(){
+  $options = get_option('video_wallpaper_social_settings');
+
+  ?><input name="video_wallpaper_social_settings[soundcloud_id]"
+           type="text"
+           value="<?php echo $options['soundcloud_id'] ?>" /><?php
+}
+
+function video_wallpaper_reverbnation_id_callback(){
+  $options = get_option('video_wallpaper_social_settings');
+
+  ?><input name="video_wallpaper_social_settings[reverbnation_id]"
+           type="text"
+           value="<?php echo $options['reverbnation_id'] ?>" /><?php
+}
+
+function video_wallpaper_tumblr_id_callback(){
+  $options = get_option('video_wallpaper_social_settings');
+
+  ?><input name="video_wallpaper_social_settings[tumblr_id]"
+           type="text"
+           value="<?php echo $options['tumblr_id'] ?>" /><?php
+}
+
 function video_wallpaper_social_settings_validate($input){
   $options = get_option('video_wallpaper_social_settings');
 
@@ -111,6 +159,9 @@ function video_wallpaper_social_settings_validate($input){
   $options['instagram_id'] = sanitize_text_field($input['instagram_id']);
   $options['twitter_id'] = sanitize_text_field($input['twitter_id']);
   $options['youtube_id'] = sanitize_text_field($input['youtube_id']);
+  $options['soundcloud_id'] = sanitize_text_field($input['soundcloud_id']);
+  $options['reverbnation_id'] = sanitize_text_field($input['reverbnation_id']);
+  $options['tumblr_id'] = sanitize_text_field($input['tumblr_id']);
 
   return $options;
 }
@@ -129,26 +180,43 @@ function video_wallpaper_social_links(){
   $instagram_id = $options['instagram_id'];
   $twitter_id = $options['twitter_id'];
   $youtube_id = $options['youtube_id'];
+  $soundcloud_id = $options['soundcloud_id'];
+  $reverbnation_id = $options['reverbnation_id'];
+  $tumblr_id = $options['tumblr_id'];
 
   ?>
   <div class="social-nav">
-    <ul><?php
+    <ul>
+    <?php
 
-    if( ! empty( $facebook_id ) ) :
-      ?><li><a href="http://facebook.com/<?php echo $facebook_id; ?>" class="facebook" target="_blank">Facebook</a></li><?php
-    endif;
+    if( ! empty( $facebook_id ) ) : ?>
+        <li><a href="http://facebook.com/<?php echo $facebook_id; ?>" class="facebook" target="_blank">Facebook</a></li>
+    <?php endif;
 
-    if( ! empty( $twitter_id ) ) :
-      ?><li><a href="http://twitter.com/<?php echo $twitter_id; ?>" class="twitter" target="_blank">Twitter</a></li><?php
-    endif;
+    if( ! empty( $twitter_id ) ) : ?>
+        <li><a href="http://twitter.com/<?php echo $twitter_id; ?>" class="twitter" target="_blank">Twitter</a></li>
+    <?php endif;
 
-    if( ! empty( $instagram_id ) ) :
-      ?><li><a href="http://instagram.com/<?php echo $instagram_id; ?>" class="instagram" target="_blank">Instagram</a></li><?php
-    endif;
+    if( ! empty( $instagram_id ) ) : ?>
+        <li><a href="http://instagram.com/<?php echo $instagram_id; ?>" class="instagram" target="_blank">Instagram</a></li>
+    <?php endif;
 
-    if( ! empty( $youtube_id ) ) :
-      ?><li><a href="http://www.youtube.com/channel/<?php echo $youtube_id; ?>" class="youtube" target="_blank">Youtube</a></li><?php
-    endif;
+    if( ! empty( $youtube_id ) ) : ?>
+        <li><a href="http://www.youtube.com/channel/<?php echo $youtube_id; ?>" class="youtube" target="_blank">Youtube</a></li>
+    <?php endif;
+
+    if( ! empty( $soundcloud_id ) ) : ?>
+        <li><a href="http://soundcloud.com/<?php echo $soundcloud_id; ?>" class="soundcloud" target="_blank">SoundCloud</a></li>
+    <?php endif;
+
+    if( ! empty( $reverbnation_id ) ) : ?>
+        <li><a href="http://reverbnation.com/<?php echo $reverbnation_id; ?>" class="reverbnation" target="_blank">ReverbNation</a></li>
+    <?php endif;
+
+    if( ! empty( $tumblr_id ) ) : ?>
+        <li><a href="http://<?php echo $tumblr_id; ?>.tumblr.com/" class="tumblr" target="_blank">Tumblr</a></li>
+    <?php endif;
+
 
     ?></ul>
   </div>

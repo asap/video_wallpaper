@@ -1,6 +1,6 @@
 /*
 Theme Name: Video Wallpaper
-Theme URI: 
+Theme URI:
 Author: Alexander Sapountzis
 Author URI: http://briteideas.com
 Description: A simple theme with a video as the wallpaper
@@ -460,7 +460,7 @@ hr {
 }
 
 #mobile-navbar{
-    display: none;  
+    display: none;
 }
 
 #navbar{
@@ -768,6 +768,18 @@ body.page #primary #content .gallery dl{
     background: url(img/sprites.png) -204px -219px transparent no-repeat;
 }
 
+.social-nav li a.soundcloud{
+    background: url(img/sprites.png) -204px -284px transparent no-repeat;
+}
+
+.social-nav li a.reverbnation{
+    background: url(img/sprites.png) -138px -284px transparent no-repeat;
+}
+
+.social-nav li a.tumblr{
+    background: url(img/sprites.png) -60px -284px transparent no-repeat;
+}
+
 /** Twitter Pro WP Plugin ***/
 /* http://wordpress.org/plugins/twitter-widget-pro/ */
 
@@ -843,7 +855,7 @@ footer{
         width: 100%;
     }
 
-    
+
     body.home article,
     body.single article.blog{
         float: none;
@@ -924,6 +936,18 @@ footer{
 
     .social-nav li a.linkedin{
         background: url(img/sprites.32x32.png) -108px -106px transparent no-repeat;
+    }
+
+    .social-nav li a.soundcloud{
+        background: url(img/sprites.32x32.png) -108px -106px transparent no-repeat;
+    }
+
+    .social-nav li a.reverbnation{
+        background: url(img/sprites.32x32.png) -73px -138px transparent no-repeat;
+    }
+
+    .social-nav li a.tumblr{
+        background: url(img/sprites.32x32.png) -32px -138px transparent no-repeat;
     }
 
     footer{
@@ -1081,7 +1105,7 @@ footer{
     ul#menu-main li{
         display: block;
     }
-    
+
     ul#menu-main li a{
         font-size: 1.5em;
     }
