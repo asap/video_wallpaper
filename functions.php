@@ -33,8 +33,7 @@ function video_wallpaper_setup() {
      * "standard" posts and pages.
      */
     add_theme_support( 'post-thumbnails' );
-    set_post_thumbnail_size( 604, 270, true );
-    add_image_size( 'gallery_thumb', 380, 380, true );
+    set_post_thumbnail_size( 604, 270, 75, true );
 }
 add_action( 'after_setup_theme', 'video_wallpaper_setup' );
 
@@ -189,12 +188,45 @@ function video_wallpaper_scripts_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'video_wallpaper_scripts_styles' );
 
+/**
+ * Register Video Wallpaper widget areas.
+ *
+ * @since Twenty Fourteen 1.0
+ *
+ * @return void
+ */
+function video_wallpaper_widgets_init() {
+  register_sidebar( array(
+    'name'          => 'Home Page Sidebar',
+    'id'            => 'sidebar-1',
+    'description'   => 'Sidebar that appears on the Home page.',
+    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+    'after_widget'  => '</aside>',
+    'before_title'  => '<h1 class="widget-title">',
+    'after_title'   => '</h1>',
+  ) );
+}
+add_action( 'widgets_init', 'video_wallpaper_widgets_init' );
+
 // Load plugins
 define("VW_THEME_DIR", dirname(__FILE__) . "/");
 define("VW_PLUGIN_DIR", VW_THEME_DIR . "plugins/");
+define("VW_ADMIN_URL", admin_url('options-general.php?page=video_wallpaper_options'));
+define("META_SLIDER_ADMIN_URL", admin_url('admin.php?page=metaslider'));
+
+require_once VW_PLUGIN_DIR . 'custom-header.php';
+// Contains functions for changing the header image
 
 require_once VW_PLUGIN_DIR . 'meta_box.php';
+// Contains custom meta boxes for post and page edit screen
+// - Article Alignement
+
+require_once VW_PLUGIN_DIR . 'homepage.php';
+// Contains homepage settings
+// - Meta Slider Configuration
+
 require_once VW_PLUGIN_DIR . 'social.php';
+// Contains social settings used on footer
+
 require_once VW_PLUGIN_DIR . 'wallpaper.php';
-
-
+// Contains video wallpaper functions and meta box settings

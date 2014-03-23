@@ -17,13 +17,16 @@ function video_wallpaper_custom_post_meta(){
     add_meta_box(
       'article_alignment',
       'Article Alignment',
-      'video_wallpaper_article_alignment_metabox'
+      'video_wallpaper_article_alignment_metabox',
+      'page'
     );
 
+  
     add_meta_box(
-        'video_url',
-        'Video Wallpaper',
-        'video_wallpaper_render_video_url_meta_box'
+      'video_url',
+      'Video Wallpaper',
+      'video_wallpaper_render_video_url_meta_box',
+      'page'
     );
 }
 add_action( 'add_meta_boxes', 'video_wallpaper_custom_post_meta');
@@ -44,6 +47,9 @@ function video_wallpaper_article_alignment_metabox( $post ){
     ?>
     <p class="description">
       Sets the alignment of the content of this page.
+    </p>
+    <p class="description">
+      <strong>Note:</strong> Does not work when sidebar is in use
     </p>
     <input type="radio" id="video_wallpaper_alignment_full"
            name="video_wallpaper_alignment"

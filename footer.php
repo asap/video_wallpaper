@@ -10,6 +10,9 @@
  */
 ?>
 
-    <?php wp_footer(); ?>
+    <footer>
+        <?php if(function_exists(video_wallpaper_social_links)) video_wallpaper_social_links(); ?>
+        <?php wp_footer(); ?>
+    </footer>
 </body>
 </html>

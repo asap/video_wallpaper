@@ -1,6 +1,6 @@
 <?php
 /**
- * Default theme for pages
+ * Template Name: Media
  *
  * @link http://codex.wordpress.org/Template_Hierarchy
  *
@@ -41,7 +41,7 @@ $classes = array(
                 <?php while ( have_posts() ) : the_post(); ?>
                     <?php if($post->post_content) : ?>
 
-                    <?php get_template_part( 'content', 'page' ); ?>                
+                    <?php get_template_part( 'content', 'media' ); ?>                
 
                     <?php endif; ?>
                     

@@ -20,25 +20,8 @@
 
         $('.menu-toggle' ).on( 'click', function() {
             $('#navbar').toggleClass( 'exposed' );
+            $('.menu-toggle').toggleClass( 'exposed' );
         } );
-
-        if (!Modernizr.touch) {
-            setTimeout(function(){
-                $('#navbar').removeClass( 'exposed' );
-            }, 1000);
-        }
-
-        window.addEventListener('orientationchange', function(){
-            switch (window.orientation) {
-              case -90:
-              case 90:
-                $('#navbar').addClass( 'exposed' );
-                break;
-              default:
-                $('#navbar').removeClass( 'exposed' );
-                break;
-            }
-        });
 
     } )();
 
