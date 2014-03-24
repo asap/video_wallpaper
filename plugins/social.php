@@ -79,6 +79,14 @@ function video_wallpaper_social_settings_init(){
     'video_wallpaper_social_section'
   );
 
+  add_settings_field(
+    'video_wallpaper_itunes_id',
+    'iTunes ID',
+    'video_wallpaper_itunes_id_callback',
+    'video_wallpaper_options',
+    'video_wallpaper_social_section'
+    );
+
   register_setting(
     'video_wallpaper_settings_group',
     'video_wallpaper_social_settings',
@@ -152,6 +160,14 @@ function video_wallpaper_tumblr_id_callback(){
            value="<?php echo $options['tumblr_id'] ?>" /><?php
 }
 
+function video_wallpaper_itunes_id_callback(){
+  $options = get_option('video_wallpaper_social_settings');
+
+  ?><input name="video_wallpaper_social_settings[itunes_id]"
+           type="text"
+           value="<?php echo $options['itunes_id'] ?>" /><?php
+}
+
 function video_wallpaper_social_settings_validate($input){
   $options = get_option('video_wallpaper_social_settings');
 
@@ -162,6 +178,7 @@ function video_wallpaper_social_settings_validate($input){
   $options['soundcloud_id'] = sanitize_text_field($input['soundcloud_id']);
   $options['reverbnation_id'] = sanitize_text_field($input['reverbnation_id']);
   $options['tumblr_id'] = sanitize_text_field($input['tumblr_id']);
+  $options['itunes_id'] = sanitize_text_field($input['itunes_id']);
 
   return $options;
 }
@@ -183,6 +200,7 @@ function video_wallpaper_social_links(){
   $soundcloud_id = $options['soundcloud_id'];
   $reverbnation_id = $options['reverbnation_id'];
   $tumblr_id = $options['tumblr_id'];
+  $itunes_id = $options['itunes_id'];
 
   ?>
   <div class="social-nav">
@@ -215,6 +233,10 @@ function video_wallpaper_social_links(){
 
     if( ! empty( $tumblr_id ) ) : ?>
         <li><a href="http://<?php echo $tumblr_id; ?>.tumblr.com/" class="tumblr" target="_blank">Tumblr</a></li>
+    <?php endif;
+
+    if( ! empty( $itunes_id ) ) : ?>
+        <li><a href="http://itunes.apple.com/us/artist/<?php echo $itunes_id; ?>/" class="itunes" target="_blank">iTunes</a></li>
     <?php endif;
 
 

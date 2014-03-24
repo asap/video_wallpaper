@@ -757,7 +757,7 @@ body.page #primary #content .gallery dl{
 }
 
 .social-nav li a.vimeo{
-    background: url(img/sprites.png) -60px -219px transparent no-repeat;
+    background: url(img/sprites.png) 15px -219px transparent no-repeat;
 }
 
 .social-nav li a.pinterest{
@@ -779,6 +779,11 @@ body.page #primary #content .gallery dl{
 .social-nav li a.tumblr{
     background: url(img/sprites.png) -60px -284px transparent no-repeat;
 }
+
+.social-nav li a.itunes{
+    background: url(img/sprites.png) 15px -284px transparent no-repeat;
+}
+
 
 /** Twitter Pro WP Plugin ***/
 /* http://wordpress.org/plugins/twitter-widget-pro/ */
@@ -949,6 +954,11 @@ footer{
     .social-nav li a.tumblr{
         background: url(img/sprites.32x32.png) -32px -138px transparent no-repeat;
     }
+
+    .social-nav li a.itunes{
+        background: url(img/sprites.32x32.png) 0px -138px transparent no-repeat;
+    }
+
 
     footer{
         height: 40px;
