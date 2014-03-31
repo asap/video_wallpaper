@@ -907,6 +907,7 @@ footer{
     }
 
     .social-nav li a{
+        margin: 1px;
         height: 32px;
         width: 32px;
     }
